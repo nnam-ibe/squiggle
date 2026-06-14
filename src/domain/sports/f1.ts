@@ -4,6 +4,7 @@ import type {
   EntityType,
   NormalizedResult,
   RowError,
+  SortKey,
   SportAdapter,
 } from "../types";
 import type { F1PointsRules } from "@/config/schema";
@@ -169,10 +170,18 @@ export function createF1Adapter(season: string | number, rules: F1PointsRules): 
     return keys;
   };
 
+  // Count-back: compare finishes position-by-position (most wins, then most
+  // 2nds, …). finishCounts[0] = wins, [1] = 2nds, …; a higher count ranks better.
+  const count_back: CriterionEval = (group, ctx) => {
+    const keys = new Map<string, SortKey>();
+    for (const e of group) keys.set(e, ctx.agg.get(e)?.finishCounts ?? []);
+    return keys;
+  };
+
   return {
     entityTypes: ["driver", "constructor"],
     parseRow,
     accumulate,
-    criteria: { points },
+    criteria: { points, count_back },
   };
 }
