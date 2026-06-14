@@ -6,6 +6,8 @@ export interface ParseResult {
   errors: RowError[];
   /** Number of data rows seen (excludes the header), including invalid ones. */
   rowCount: number;
+  /** Header column names as detected (trimmed), for column-presence checks. */
+  fields: string[];
 }
 
 function isRowError(x: NormalizedResult | RowError): x is RowError {
@@ -41,5 +43,5 @@ export function parseResultsCsv(csv: string, adapter: SportAdapter): ParseResult
     else results.push(out);
   });
 
-  return { results, errors, rowCount: parsed.data.length };
+  return { results, errors, rowCount: parsed.data.length, fields: parsed.meta.fields ?? [] };
 }
