@@ -8,8 +8,7 @@ import type {
   SportAdapter,
 } from "../types";
 import type { F1PointsRules } from "@/config/schema";
-
-const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+import { isValidIsoDate } from "../date";
 
 // Finish values that classify a driver out of the points (no race points scored).
 const NO_POINTS_FINISH = new Set([
@@ -47,8 +46,8 @@ function parseRow(raw: Record<string, string>, row: number): NormalizedResult | 
     return { row, field: "round", message: "round must be a positive integer" };
   }
   const playedOn = (r["date"] ?? "").trim();
-  if (!DATE_RE.test(playedOn)) {
-    return { row, field: "date", message: "date must be YYYY-MM-DD" };
+  if (!isValidIsoDate(playedOn)) {
+    return { row, field: "date", message: "date must be a valid YYYY-MM-DD date" };
   }
   const driver = (r["driver"] ?? "").trim();
   if (!driver) return { row, field: "driver", message: "driver is required" };
