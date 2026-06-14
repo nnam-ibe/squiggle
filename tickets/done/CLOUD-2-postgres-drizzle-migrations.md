@@ -11,8 +11,7 @@ Epic 0 — Provision Postgres (Neon/Supabase), add Drizzle, create the `datasets
 
 ## Acceptance Criteria
 - [x] Migrations run against a local DB; smoke query succeeds
-- [ ] Migrations run against a hosted DB — pending a provisioned `DATABASE_URL`
-      (same command: `npm run db:migrate`)
+- [x] Migrations run against a hosted DB; smoke query succeeds
 
 ## Notes
 Implemented:
@@ -29,7 +28,10 @@ Verified locally end-to-end against an **ephemeral Postgres cluster** (initdb �
 match (jsonb + FK) succeeded, and the unique (league, season) index correctly
 rejected a duplicate.
 
-Remaining (ops, not code): provision a hosted Postgres (Neon/Supabase), set
-`DATABASE_URL`, and run `npm run db:migrate`. Driver is postgres.js; if deploying
-to Neon serverless/edge later, swapping to `@neondatabase/serverless` is a small
-change in `client.ts`.
+Hosted verified: `drizzle-kit migrate` applied cleanly against the project's
+**Supabase** Postgres — all 3 tables created, a transactional write test
+(insert + rollback) succeeded leaving no rows, and counts read back as 0.
+`DATABASE_URL` lives in `.env` (gitignored).
+
+Driver is postgres.js; if deploying to Neon serverless/edge later, swapping to
+`@neondatabase/serverless` is a small change in `client.ts`.
