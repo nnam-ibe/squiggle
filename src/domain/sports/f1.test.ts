@@ -1,9 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { createF1Adapter } from "./f1";
-import { getF1PointsRules } from "@/config/leagues";
+import { computeStandings } from "../standings";
+import { getF1PointsRules, getTieBreakers } from "@/config/leagues";
 import type { NormalizedResult } from "../types";
 
 const rules = getF1PointsRules()!;
+const F1_TIE_BREAKERS = getTieBreakers("formula-1")!;
 
 function race(
   round: number,
@@ -164,5 +166,65 @@ describe("parseRow", () => {
     );
     expect(isError(out)).toBe(false);
     if (!isError(out)) expect(out.finishPosition).toBe(5);
+  });
+});
+
+describe("drivers standings with count-back tie-break", () => {
+  const adapter = createF1Adapter(2024, rules);
+  // C is 2nd in all three races (54 pts). A and B both total 50, but A has two
+  // wins to B's one, so count-back must rank A above B.
+  const results = [
+    race(1, "2024-03-02", "A", "Alpha", 1),
+    race(1, "2024-03-02", "B", "Bravo", 3),
+    race(1, "2024-03-02", "C", "Charlie", 2),
+    race(2, "2024-03-09", "A", "Alpha", 1),
+    race(2, "2024-03-09", "B", "Bravo", 5),
+    race(2, "2024-03-09", "C", "Charlie", 2),
+    race(3, "2024-03-16", "A", "Alpha", null),
+    race(3, "2024-03-16", "B", "Bravo", 1),
+    race(3, "2024-03-16", "C", "Charlie", 2),
+  ];
+  const last = computeStandings({
+    results,
+    entityType: "driver",
+    tieBreakers: F1_TIE_BREAKERS,
+    adapter,
+  }).rounds.at(-1)!.standings;
+  const pts = (e: string) => last.find((x) => x.entity === e)!.points;
+
+  it("totals points correctly (A and B tie on 50)", () => {
+    expect(pts("C")).toBe(54);
+    expect(pts("A")).toBe(50);
+    expect(pts("B")).toBe(50);
+  });
+
+  it("orders by points, then count-back (A's 2 wins beat B's 1)", () => {
+    expect(last.map((x) => x.entity)).toEqual(["C", "A", "B"]);
+  });
+});
+
+describe("constructors standings sum each team's drivers", () => {
+  const adapter = createF1Adapter(2024, rules);
+  const results = [
+    race(1, "2024-03-02", "VER", "Red Bull Racing", 1), // 25
+    race(1, "2024-03-02", "PER", "Red Bull Racing", 4), // 12
+    race(1, "2024-03-02", "LEC", "Ferrari", 2), // 18
+    race(1, "2024-03-02", "SAI", "Ferrari", 3), // 15
+  ];
+  const last = computeStandings({
+    results,
+    entityType: "constructor",
+    tieBreakers: F1_TIE_BREAKERS,
+    adapter,
+  }).rounds.at(-1)!.standings;
+
+  it("sums points per constructor and orders them", () => {
+    expect(last.map((x) => x.entity)).toEqual(["Red Bull Racing", "Ferrari"]);
+    expect(last.find((x) => x.entity === "Red Bull Racing")!.points).toBe(37);
+    expect(last.find((x) => x.entity === "Ferrari")!.points).toBe(33);
+  });
+
+  it("does not list individual drivers in constructor mode", () => {
+    expect(last.find((x) => x.entity === "VER")).toBeUndefined();
   });
 });
