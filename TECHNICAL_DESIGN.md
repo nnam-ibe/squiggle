@@ -191,20 +191,25 @@ The x-axis is the **round index**, but a round's snapshot reflects everything
 **actually played** by that round's end date:
 
 ```
-1. roundEndDate[r] = max(playedOn) over results where result.round === r
-2. cutoffs = sorted distinct round numbers 1..maxRound
-3. for each round r:
-     cutoff = roundEndDate[r]
-     included = all results with playedOn <= cutoff
-     stats   = accumulate(included)          // via sport adapter
-     ranked  = rank(stats, tieBreakers)      // §6.4
+1. repDate[r] = median(playedOn) over results where result.round === r
+2. cutoff[r]  = running max of repDate over rounds 1..r   (keeps it monotonic)
+3. for each round r (in order):
+     included = all results with playedOn <= cutoff[r]
+     stats    = accumulate(included)          // via sport adapter
+     ranked   = rank(stats, tieBreakers)      // §6.4
      snapshot[r] = ranked
 ```
 
-A game from round 5 postponed and played after round 10's end date is therefore
-counted in round 10's snapshot (its real date), not retroactively at round 5 —
-exactly the "by date played" decision. Complexity is trivial (≤38 rounds ×
-≤20 entities), so the naive recompute-per-round is fine.
+**Why median, not max:** a postponed fixture keeps its original round number but
+a much later play date. Using the *max* of a round's dates would let that one
+outlier drag the round's cutoff forward and pull future results into an early
+snapshot. The **median** is the round's representative ("most games played by")
+date, robust to a few postponed outliers; the running max keeps cutoffs
+non-decreasing. A round-5 game postponed and played after round 10 is therefore
+counted from whichever round's cutoff first reaches its real date — not
+retroactively at round 5. Complexity is trivial (≤38 rounds × ≤20 entities), so
+recompute-per-round is fine. (Implemented in `src/domain/standings.ts`, covered
+by a postponement test.)
 
 ### 6.3 Sport adapter interface
 
