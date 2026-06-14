@@ -1,0 +1,41 @@
+{
+  "id": "ligue-1",
+  "sport": "soccer",
+  "name": "Ligue 1",
+  "country": "France",
+  "format": {
+    "teams": 18,
+    "rounds": 34,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0,
+    "formatNote": "Reduced from 20 teams (38 rounds) to 18 teams (34 rounds) starting 2023-24."
+  },
+  "tieBreakers": ["points", "goal_difference", "goals_scored", "head_to_head_points", "away_goals_scored", "alphabetical"],
+  "tieBreakerNotes": "Ligue 1 official order: points > overall GD > overall goals scored > head-to-head points > away goals scored. Head-to-head ranks below overall GD.",
+  "seasons": {
+    "2024-25": {
+      "status": "complete",
+      "teams": [
+        { "name": "Paris Saint-Germain", "short": "PSG", "color": "#004170" },
+        { "name": "Marseille", "short": "OM", "color": "#2FAEE0" },
+        { "name": "Monaco", "short": "ASM", "color": "#E51B22" },
+        { "name": "Lille", "short": "LIL", "color": "#E01E13" },
+        { "name": "Lyon", "short": "OL", "color": "#1D4288" },
+        { "name": "Nice", "short": "NIC", "color": "#C8102E" },
+        { "name": "Lens", "short": "RCL", "color": "#FFE500" },
+        { "name": "Rennes", "short": "REN", "color": "#E23227" },
+        { "name": "Strasbourg", "short": "STR", "color": "#0095DB" },
+        { "name": "Toulouse", "short": "TFC", "color": "#6E2585" },
+        { "name": "Brest", "short": "BRE", "color": "#C30B23" },
+        { "name": "Nantes", "short": "NAN", "color": "#FCD405" },
+        { "name": "Reims", "short": "REI", "color": "#E2001A" },
+        { "name": "Montpellier", "short": "MHSC", "color": "#F37021" },
+        { "name": "Le Havre", "short": "HAC", "color": "#005BA9" },
+        { "name": "Auxerre", "short": "AJA", "color": "#0066B3" },
+        { "name": "Angers", "short": "SCO", "color": "#1A1A1A" },
+        { "name": "Saint-Etienne", "short": "ASSE", "color": "#009A44" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "formula-1",
+  "sport": "motorsport",
+  "name": "Formula 1",
+  "entities": ["drivers", "constructors"],
+  "tieBreakers": ["points", "count_back"],
+  "tieBreakerNotes": "F1 ties are broken by count-back: most wins, then most 2nd places, then most 3rd places, and so on down the finishing positions.",
+  "pointsRules": {
+    "note": "Each rule block applies for seasons in [fromSeason, toSeason]; toSeason null = ongoing. v1 targets the current + last ~10 years; older eras can be added as new blocks.",
+    "race": [
+      { "fromSeason": 2010, "toSeason": null, "points": [25, 18, 15, 12, 10, 8, 6, 4, 2, 1] }
+    ],
+    "fastestLap": [
+      { "fromSeason": 2019, "toSeason": 2024, "points": 1, "maxFinishPosition": 10 }
+    ],
+    "sprint": [
+      { "fromSeason": 2021, "toSeason": 2021, "points": [3, 2, 1] },
+      { "fromSeason": 2022, "toSeason": null, "points": [8, 7, 6, 5, 4, 3, 2, 1] }
+    ]
+  },
+  "seasons": {
+    "2024": {
+      "status": "complete",
+      "constructors": [
+        { "name": "McLaren", "short": "MCL", "color": "#FF8000" },
+        { "name": "Ferrari", "short": "FER", "color": "#E8002D" },
+        { "name": "Red Bull Racing", "short": "RBR", "color": "#3671C6" },
+        { "name": "Mercedes", "short": "MER", "color": "#27F4D2" },
+        { "name": "Aston Martin", "short": "AMR", "color": "#229971" },
+        { "name": "Alpine", "short": "ALP", "color": "#0093CC" },
+        { "name": "Williams", "short": "WIL", "color": "#64C4FF" },
+        { "name": "RB", "short": "RB", "color": "#6692FF" },
+        { "name": "Haas", "short": "HAA", "color": "#B6BABD" },
+        { "name": "Kick Sauber", "short": "SAU", "color": "#52E252" }
+      ]
+    },
+    "2025": {
+      "status": "in_progress",
+      "constructors": [
+        { "name": "McLaren", "short": "MCL", "color": "#FF8000" },
+        { "name": "Ferrari", "short": "FER", "color": "#E8002D" },
+        { "name": "Red Bull Racing", "short": "RBR", "color": "#3671C6" },
+        { "name": "Mercedes", "short": "MER", "color": "#27F4D2" },
+        { "name": "Aston Martin", "short": "AMR", "color": "#229971" },
+        { "name": "Alpine", "short": "ALP", "color": "#0093CC" },
+        { "name": "Williams", "short": "WIL", "color": "#64C4FF" },
+        { "name": "Racing Bulls", "short": "RB", "color": "#6692FF" },
+        { "name": "Haas", "short": "HAA", "color": "#B6BABD" },
+        { "name": "Kick Sauber", "short": "SAU", "color": "#52E252" }
+      ]
+    }
+  },
+  "rosterNote": "Drivers are validated leniently (warn-only) since lineups change mid-season. In the drivers chart, teammates share a constructor color and are distinguished by line style (e.g. solid vs dashed)."
+}

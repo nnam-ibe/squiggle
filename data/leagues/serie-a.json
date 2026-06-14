@@ -1,0 +1,42 @@
+{
+  "id": "serie-a",
+  "sport": "soccer",
+  "name": "Serie A",
+  "country": "Italy",
+  "format": {
+    "teams": 20,
+    "rounds": 38,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0
+  },
+  "tieBreakers": ["points", "head_to_head_points", "head_to_head_goal_difference", "goal_difference", "goals_scored", "alphabetical"],
+  "tieBreakerNotes": "Serie A official order: points > head-to-head points > head-to-head GD > overall GD > overall goals scored. Head-to-head uses a mini-table among ONLY the tied teams. Historically a championship/relegation play-off may be used when the tie decides the title or relegation; that is out of scope for chart display.",
+  "seasons": {
+    "2024-25": {
+      "status": "complete",
+      "teams": [
+        { "name": "Inter", "short": "INT", "color": "#0068A8" },
+        { "name": "AC Milan", "short": "MIL", "color": "#FB090B" },
+        { "name": "Juventus", "short": "JUV", "color": "#000000" },
+        { "name": "Napoli", "short": "NAP", "color": "#12A0D7" },
+        { "name": "Roma", "short": "ROM", "color": "#8E1F2F" },
+        { "name": "Atalanta", "short": "ATA", "color": "#1E71B8" },
+        { "name": "Lazio", "short": "LAZ", "color": "#87D8F7" },
+        { "name": "Fiorentina", "short": "FIO", "color": "#592C82" },
+        { "name": "Bologna", "short": "BOL", "color": "#A21C30" },
+        { "name": "Torino", "short": "TOR", "color": "#881820" },
+        { "name": "Udinese", "short": "UDI", "color": "#000000" },
+        { "name": "Genoa", "short": "GEN", "color": "#A50021" },
+        { "name": "Cagliari", "short": "CAG", "color": "#AC1E44" },
+        { "name": "Hellas Verona", "short": "VER", "color": "#FFD200" },
+        { "name": "Lecce", "short": "LEC", "color": "#FFE700" },
+        { "name": "Empoli", "short": "EMP", "color": "#00579C" },
+        { "name": "Parma", "short": "PAR", "color": "#1E4C9A" },
+        { "name": "Como", "short": "COM", "color": "#0072BB" },
+        { "name": "Venezia", "short": "VEN", "color": "#F36F21" },
+        { "name": "Monza", "short": "MON", "color": "#E2001A" }
+      ]
+    }
+  }
+}

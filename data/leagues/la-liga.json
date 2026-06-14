@@ -1,0 +1,42 @@
+{
+  "id": "la-liga",
+  "sport": "soccer",
+  "name": "La Liga",
+  "country": "Spain",
+  "format": {
+    "teams": 20,
+    "rounds": 38,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0
+  },
+  "tieBreakers": ["points", "head_to_head_points", "head_to_head_goal_difference", "goal_difference", "goals_scored", "alphabetical"],
+  "tieBreakerNotes": "La Liga official order: points > head-to-head points > head-to-head GD > overall GD > overall goals scored. Head-to-head uses a mini-table among ONLY the tied teams; it is applied only once all tied teams have played each other the same number of times (otherwise overall GD is used).",
+  "seasons": {
+    "2024-25": {
+      "status": "complete",
+      "teams": [
+        { "name": "Real Madrid", "short": "RMA", "color": "#FEBE10" },
+        { "name": "Barcelona", "short": "BAR", "color": "#A50044" },
+        { "name": "Atletico Madrid", "short": "ATM", "color": "#CB3524" },
+        { "name": "Athletic Club", "short": "ATH", "color": "#EE2523" },
+        { "name": "Real Sociedad", "short": "RSO", "color": "#0067B1" },
+        { "name": "Sevilla", "short": "SEV", "color": "#D90000" },
+        { "name": "Real Betis", "short": "BET", "color": "#00954C" },
+        { "name": "Villarreal", "short": "VIL", "color": "#FFE667" },
+        { "name": "Valencia", "short": "VAL", "color": "#F18E00" },
+        { "name": "Girona", "short": "GIR", "color": "#CD2534" },
+        { "name": "Osasuna", "short": "OSA", "color": "#D91A21" },
+        { "name": "Getafe", "short": "GET", "color": "#005999" },
+        { "name": "Celta Vigo", "short": "CEL", "color": "#8AC3EE" },
+        { "name": "Rayo Vallecano", "short": "RAY", "color": "#E53027" },
+        { "name": "Mallorca", "short": "MLL", "color": "#E20613" },
+        { "name": "Las Palmas", "short": "LPA", "color": "#FEDD00" },
+        { "name": "Espanyol", "short": "ESP", "color": "#007FC8" },
+        { "name": "Leganes", "short": "LEG", "color": "#005AB0" },
+        { "name": "Valladolid", "short": "VLL", "color": "#921C8E" },
+        { "name": "Alaves", "short": "ALA", "color": "#0761AF" }
+      ]
+    }
+  }
+}

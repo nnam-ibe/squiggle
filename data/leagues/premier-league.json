@@ -1,0 +1,67 @@
+{
+  "id": "premier-league",
+  "sport": "soccer",
+  "name": "Premier League",
+  "country": "England",
+  "format": {
+    "teams": 20,
+    "rounds": 38,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0
+  },
+  "tieBreakers": ["points", "goal_difference", "goals_scored", "playoff", "alphabetical"],
+  "tieBreakerNotes": "Official PL order is points > GD > goals scored; if still level a play-off is held only when it affects title, relegation, or qualification. For chart display we fall back to alphabetical after goals scored.",
+  "seasons": {
+    "2024-25": {
+      "status": "complete",
+      "teams": [
+        { "name": "Arsenal", "short": "ARS", "color": "#EF0107" },
+        { "name": "Aston Villa", "short": "AVL", "color": "#670E36" },
+        { "name": "Bournemouth", "short": "BOU", "color": "#DA291C" },
+        { "name": "Brentford", "short": "BRE", "color": "#E30613" },
+        { "name": "Brighton", "short": "BHA", "color": "#0057B8" },
+        { "name": "Chelsea", "short": "CHE", "color": "#034694" },
+        { "name": "Crystal Palace", "short": "CRY", "color": "#1B458F" },
+        { "name": "Everton", "short": "EVE", "color": "#003399" },
+        { "name": "Fulham", "short": "FUL", "color": "#000000" },
+        { "name": "Ipswich Town", "short": "IPS", "color": "#0044A9" },
+        { "name": "Leicester City", "short": "LEI", "color": "#003090" },
+        { "name": "Liverpool", "short": "LIV", "color": "#C8102E" },
+        { "name": "Manchester City", "short": "MCI", "color": "#6CABDD" },
+        { "name": "Manchester United", "short": "MUN", "color": "#DA291C" },
+        { "name": "Newcastle United", "short": "NEW", "color": "#241F20" },
+        { "name": "Nottingham Forest", "short": "NFO", "color": "#DD0000" },
+        { "name": "Southampton", "short": "SOU", "color": "#D71920" },
+        { "name": "Tottenham Hotspur", "short": "TOT", "color": "#132257" },
+        { "name": "West Ham United", "short": "WHU", "color": "#7A263A" },
+        { "name": "Wolverhampton Wanderers", "short": "WOL", "color": "#FDB913" }
+      ]
+    },
+    "2025-26": {
+      "status": "in_progress",
+      "teams": [
+        { "name": "Arsenal", "short": "ARS", "color": "#EF0107" },
+        { "name": "Aston Villa", "short": "AVL", "color": "#670E36" },
+        { "name": "Bournemouth", "short": "BOU", "color": "#DA291C" },
+        { "name": "Brentford", "short": "BRE", "color": "#E30613" },
+        { "name": "Brighton", "short": "BHA", "color": "#0057B8" },
+        { "name": "Burnley", "short": "BUR", "color": "#6C1D45" },
+        { "name": "Chelsea", "short": "CHE", "color": "#034694" },
+        { "name": "Crystal Palace", "short": "CRY", "color": "#1B458F" },
+        { "name": "Everton", "short": "EVE", "color": "#003399" },
+        { "name": "Fulham", "short": "FUL", "color": "#000000" },
+        { "name": "Leeds United", "short": "LEE", "color": "#1D428A" },
+        { "name": "Liverpool", "short": "LIV", "color": "#C8102E" },
+        { "name": "Manchester City", "short": "MCI", "color": "#6CABDD" },
+        { "name": "Manchester United", "short": "MUN", "color": "#DA291C" },
+        { "name": "Newcastle United", "short": "NEW", "color": "#241F20" },
+        { "name": "Nottingham Forest", "short": "NFO", "color": "#DD0000" },
+        { "name": "Sunderland", "short": "SUN", "color": "#EB172B" },
+        { "name": "Tottenham Hotspur", "short": "TOT", "color": "#132257" },
+        { "name": "West Ham United", "short": "WHU", "color": "#7A263A" },
+        { "name": "Wolverhampton Wanderers", "short": "WOL", "color": "#FDB913" }
+      ]
+    }
+  }
+}

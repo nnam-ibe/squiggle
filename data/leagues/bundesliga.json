@@ -1,0 +1,40 @@
+{
+  "id": "bundesliga",
+  "sport": "soccer",
+  "name": "Bundesliga",
+  "country": "Germany",
+  "format": {
+    "teams": 18,
+    "rounds": 34,
+    "pointsForWin": 3,
+    "pointsForDraw": 1,
+    "pointsForLoss": 0
+  },
+  "tieBreakers": ["points", "goal_difference", "goals_scored", "head_to_head_points", "head_to_head_away_goals", "away_goals_scored", "alphabetical"],
+  "tieBreakerNotes": "Bundesliga official order: points > overall GD > overall goals scored > head-to-head points > head-to-head away goals > overall away goals. Note head-to-head ranks BELOW overall GD here, unlike La Liga/Serie A.",
+  "seasons": {
+    "2024-25": {
+      "status": "complete",
+      "teams": [
+        { "name": "Bayern Munich", "short": "FCB", "color": "#DC052D" },
+        { "name": "Bayer Leverkusen", "short": "B04", "color": "#E32221" },
+        { "name": "VfB Stuttgart", "short": "VFB", "color": "#E32219" },
+        { "name": "RB Leipzig", "short": "RBL", "color": "#DD0741" },
+        { "name": "Borussia Dortmund", "short": "BVB", "color": "#FDE100" },
+        { "name": "Eintracht Frankfurt", "short": "SGE", "color": "#E1000F" },
+        { "name": "TSG Hoffenheim", "short": "TSG", "color": "#1C63B7" },
+        { "name": "SC Freiburg", "short": "SCF", "color": "#E2001A" },
+        { "name": "Werder Bremen", "short": "SVW", "color": "#1D9053" },
+        { "name": "FC Augsburg", "short": "FCA", "color": "#BA3733" },
+        { "name": "VfL Wolfsburg", "short": "WOB", "color": "#65B32E" },
+        { "name": "Mainz 05", "short": "M05", "color": "#C3141E" },
+        { "name": "Borussia Monchengladbach", "short": "BMG", "color": "#000000" },
+        { "name": "Union Berlin", "short": "FCU", "color": "#EB1923" },
+        { "name": "VfL Bochum", "short": "BOC", "color": "#005CA9" },
+        { "name": "FC St. Pauli", "short": "STP", "color": "#614E37" },
+        { "name": "Holstein Kiel", "short": "KIE", "color": "#00549F" },
+        { "name": "Heidenheim", "short": "HDH", "color": "#E2001A" }
+      ]
+    }
+  }
+}
