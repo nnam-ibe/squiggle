@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
+/* Squiggle design tokens — ported from design/project/Squiggle.html (see DESIGN.md).
+   Dark is the default; [data-theme="light"] overrides. Accent is amber #ffb020. */
+:root,
+:root[data-theme="dark"] {
+  --bg: #0a0d13;
+  --bg-grad: radial-gradient(120% 80% at 50% -10%, #121826 0%, #0a0d13 60%);
+  --panel: #11151f;
+  --panel2: #161c28;
+  --raise: #1b2231;
+  --line: rgba(255, 255, 255, 0.08);
+  --line2: rgba(255, 255, 255, 0.14);
+  --fg: #eef1f7;
+  --fg2: #a4adbe;
+  --fg3: #6a7488;
+  --chip: #161c28;
+  --shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+}
+
+:root[data-theme="light"] {
+  --bg: #eef1f6;
+  --bg-grad: radial-gradient(120% 80% at 50% -10%, #ffffff 0%, #e9edf3 70%);
+  --panel: #ffffff;
+  --panel2: #f6f8fb;
+  --raise: #ffffff;
+  --line: rgba(16, 24, 40, 0.1);
+  --line2: rgba(16, 24, 40, 0.16);
+  --fg: #0e1320;
+  --fg2: #525d72;
+  --fg3: #8a93a4;
+  --chip: #ffffff;
+  --shadow: 0 18px 44px -22px rgba(20, 30, 50, 0.32);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent: #ffb020; /* amber — the chosen design default */
+  --acc-ink: #06140c; /* ink on accent surfaces */
+  --hw: 760; /* heading weight */
+  --tight: -0.02em;
+  /* font families set by next/font on <html> (see layout.tsx) */
+  --head: var(--font-archivo), sans-serif;
+  --body: var(--font-archivo), sans-serif;
+  --mono: var(--font-spline-mono), ui-monospace, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-raise: var(--raise);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+  --color-fg: var(--fg);
+  --color-fg2: var(--fg2);
+  --color-fg3: var(--fg3);
+  --color-chip: var(--chip);
+  --color-accent: var(--accent);
+  --color-acc-ink: var(--acc-ink);
+
+  --font-sans: var(--body);
+  --font-head: var(--head);
+  --font-mono: var(--mono);
+
+  --radius-field: 11px;
+  --radius-card: 15px;
+  --radius-panel: 18px;
+  --radius-pill: 999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: var(--bg-grad);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--head);
+  font-weight: var(--hw);
+  letter-spacing: var(--tight);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--acc-ink);
 }
