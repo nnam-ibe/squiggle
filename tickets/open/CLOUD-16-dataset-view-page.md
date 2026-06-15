@@ -16,3 +16,9 @@ handles empty/404.
 
 ## Notes
 Depends on CLOUD-15.
+
+## Design
+Match `DatasetView` in `design/project/Squiggle/screens.jsx` (see `DESIGN.md`):
+sticky blurred header with back button, sport icon, title + season pill +
+subtitle, and a theme toggle; chart zone below; sticky legend at the bottom. F1
+adds the `Drivers/Constructors` segmented toggle (CLOUD-23).

@@ -15,3 +15,11 @@ selectable; prominent "Upload data" CTA; empty state when no data.
 
 ## Notes
 Depends on CLOUD-26.
+
+## Design
+Match `HomeScreen` in `design/project/Squiggle/screens.jsx` (see `DESIGN.md`):
+brand row + theme toggle, hero ("Chart the climb."), three numbered `PickStep`
+groups (Sport → League → Season) in the **cascading cards** layout, a primary
+CTA ("Open {league} · {season}", disabled until a season with data is picked),
+and a dashed "Upload data" row. Seasons without data show a `no data` meta and
+route to the `EmptyState`.

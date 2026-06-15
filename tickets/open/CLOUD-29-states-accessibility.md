@@ -15,3 +15,9 @@ color contrast on selectors/chart controls.
 
 ## Notes
 Depends on CLOUD-27, CLOUD-28.
+
+## Design
+Reuse the design's `EmptyState` (squiggle art + copy + upload CTA) and toast
+(`.sq-toast`) patterns, and keep the `aria-label`s present on icon buttons
+(back, theme toggle, stat-card close). Loading skeletons should use the panel
+tokens. Honor the light/dark theme from CLOUD-33.

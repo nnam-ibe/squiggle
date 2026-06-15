@@ -16,3 +16,10 @@ to reset. Generous touch hit-areas. Tooltip shows round, position, points, W-D-L
 
 ## Notes
 Depends on CLOUD-17. Core to making ~20 lines usable on mobile.
+
+## Design
+Match `chart.jsx` `StatCard` + `Legend` (see `DESIGN.md`). Selecting a team bolds
+its line (glow) and dims others to a faint grey; tapping the chart **scrubs** a
+focus round (dashed guide + enlarged dot). The `StatCard` overlay shows round,
+position, points, and W-D-L + GD (soccer) or points/wins/podiums (F1). Legend
+chips at the bottom mirror selection; tap a chip or line to toggle.
