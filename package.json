@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "convert:footballdata": "NODE_NO_WARNINGS=1 node scripts/convert-footballdata.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
