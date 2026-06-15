@@ -16,3 +16,9 @@ sized for fingers.
 
 ## Notes
 Depends on CLOUD-18.
+
+## Design
+The design is already mobile-first (`Squiggle.html`): chart in a horizontal
+`.sq-scroll` with the `POS` axis pinned, legend chips in a horizontal scroller,
+single breakpoint at `min-width:720px`. Match its touch targets and column
+sizing (`ROW_H`/`COL_W` shrink when N>12).

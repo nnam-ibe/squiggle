@@ -16,3 +16,9 @@ table + warnings/errors) → confirm (with replace warning). Download-template l
 
 ## Notes
 Depends on CLOUD-12, CLOUD-14.
+
+## Design
+The design mocks only the **entry point** (the dashed upload row + a toast), not
+the full 4-step wizard. Build the wizard using the design system tokens/components
+in `Squiggle.html` (cards, CTA button, chips, panel/line colors, Archivo + Spline
+Sans Mono). The preview step should reuse the `BumpChart` + computed-table styling.

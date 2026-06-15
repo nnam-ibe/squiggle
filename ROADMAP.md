@@ -33,6 +33,7 @@ engineering detail behind each item.
 - CLOUD-14 · POST /api/datasets commit + replace-on-reupload
 
 ### EPIC 3 — Dataset view + bump chart (soccer)
+- CLOUD-33 · Design system foundation (tokens, fonts, dark/light theme)
 - CLOUD-15 · GET /api/datasets/:sport/:league/:season
 - CLOUD-16 · Dataset view page (server component)
 - CLOUD-17 · BumpChart component (static interactive)
@@ -57,6 +58,9 @@ engineering detail behind each item.
 - CLOUD-30 · Vercel + Postgres deployment
 - CLOUD-31 · Seed validated launch datasets
 - CLOUD-32 · Cross-device smoke test
+
+> Frontend tickets (CLOUD-16–20, 27–29) follow the Claude Design handoff in
+> `design/` — see `DESIGN.md` for tokens and the screen→ticket map.
 
 ## Pre-build verification (from `data/README.md` risks)
 - [ ] Confirm exact La Liga & Serie A head-to-head regulations (feeds CLOUD-7 tests).
