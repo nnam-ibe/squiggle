@@ -2,7 +2,7 @@ import { and, asc, eq } from "drizzle-orm";
 import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import * as schema from "@/db/schema";
 import { datasets, matches } from "@/db/schema";
-import { getColor, getLeague } from "@/config/leagues";
+import { getColor, getLeague, getSeasonRoster } from "@/config/leagues";
 import { getDb } from "@/db/client";
 import { createSoccerAdapter } from "@/domain/sports/soccer";
 import { computeStandings } from "@/domain/standings";
@@ -30,6 +30,8 @@ export interface DatasetStandings {
   standings: Standings;
   /** entity → brand color, from config (frontend auto-colors anything absent). */
   colors: Record<string, string>;
+  /** entity → short code, from config roster. */
+  shorts: Record<string, string>;
 }
 
 export interface DatasetQuery {
@@ -92,6 +94,9 @@ export async function getDatasetStandings(
     if (c) colors[s.entity] = c;
   }
 
+  const shorts: Record<string, string> = {};
+  for (const e of getSeasonRoster(league, season) ?? []) shorts[e.name] = e.short;
+
   return {
     sport: cfg.sport,
     league,
@@ -104,5 +109,6 @@ export async function getDatasetStandings(
     matches: rows.map((r) => ({ round: r.round, playedOn: r.playedOn, payload: r.payload })),
     standings,
     colors,
+    shorts,
   };
 }
