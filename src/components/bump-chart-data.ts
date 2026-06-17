@@ -17,6 +17,9 @@ export interface ChartSeries {
   name: string;
   short: string;
   color: string;
+  /** True when another entity in the season shares this color — render with a
+   * secondary cue (dashed stroke + outline-ring pill/dot) to stay distinguishable. */
+  dashed: boolean;
   finalPos: number;
   points: ChartPoint[];
 }
@@ -65,12 +68,36 @@ export function buildChartSeries(
     (lastRound?.standings ?? []).map((s) => [s.entity, s.position]),
   );
 
-  return [...byEntity.entries()]
-    .map(([name, points]) => ({
+  const resolved = [...byEntity.entries()].map(([name, points]) => ({
+    name,
+    points,
+    color: colors[name] ?? autoColor(name),
+  }));
+
+  // Disambiguate entities that share a brand color within the season: the first
+  // by name keeps the solid stroke, the rest are dashed (a stable, results-
+  // independent assignment, so a team's style never flips between rounds).
+  const dashed = new Set<string>();
+  const byColor = new Map<string, string[]>();
+  for (const r of resolved) {
+    const key = r.color.toLowerCase();
+    const group = byColor.get(key) ?? [];
+    group.push(r.name);
+    byColor.set(key, group);
+  }
+  for (const group of byColor.values()) {
+    if (group.length < 2) continue;
+    group.sort((a, b) => a.localeCompare(b));
+    for (const name of group.slice(1)) dashed.add(name);
+  }
+
+  return resolved
+    .map(({ name, points, color }) => ({
       id: name,
       name,
       short: shorts[name] ?? abbreviate(name),
-      color: colors[name] ?? autoColor(name),
+      color,
+      dashed: dashed.has(name),
       finalPos: finalPos.get(name) ?? points.at(-1)!.pos,
       points,
     }))

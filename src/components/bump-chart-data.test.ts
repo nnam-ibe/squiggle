@@ -48,4 +48,24 @@ describe("buildChartSeries", () => {
     expect(chelsea.short).toBe("CHE");
     expect(chelsea.color).toBe(autoColor("Chelsea"));
   });
+
+  it("dashes all but the first (by name) of entities sharing a color", () => {
+    // Both teams share #000000 → Arsenal stays solid, Chelsea is dashed.
+    const series = buildChartSeries(
+      standings,
+      { Arsenal: "#000000", Chelsea: "#000000" },
+      {},
+    );
+    expect(series.find((s) => s.id === "Arsenal")!.dashed).toBe(false);
+    expect(series.find((s) => s.id === "Chelsea")!.dashed).toBe(true);
+  });
+
+  it("leaves distinct colors solid (case-insensitive comparison)", () => {
+    const series = buildChartSeries(
+      standings,
+      { Arsenal: "#EF0107", Chelsea: "#034694" },
+      {},
+    );
+    expect(series.every((s) => !s.dashed)).toBe(true);
+  });
 });
