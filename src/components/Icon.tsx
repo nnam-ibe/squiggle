@@ -1,6 +1,6 @@
 /** Minimal icon set ported from the design (design/project/Squiggle/screens.jsx).
     Grows as later UI tickets need more icons. */
-export type IconName = "squiggle" | "sun" | "moon" | "soccer" | "f1" | "back" | "chev";
+export type IconName = "squiggle" | "sun" | "moon" | "soccer" | "f1" | "back" | "chev" | "upload";
 
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
   switch (name) {
@@ -41,6 +41,13 @@ export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "upload":
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M12 16V5m0 0L8 9m4-4l4 4" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M5 15v3a2 2 0 002 2h10a2 2 0 002-2v-3" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
         </svg>
       );
     case "squiggle":
