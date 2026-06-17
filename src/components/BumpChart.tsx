@@ -216,6 +216,7 @@ export function BumpChart({
                     fill="none"
                     stroke={someSel ? DIM : row.color}
                     strokeWidth={someSel ? 1.6 : LINE_W}
+                    strokeDasharray={row.dashed ? `${LINE_W * 2.6} ${LINE_W * 1.8}` : undefined}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     style={{ transition: "stroke .25s, stroke-width .2s, opacity .25s" }}
@@ -239,6 +240,9 @@ export function BumpChart({
                   fill="none"
                   stroke={selRow.color}
                   strokeWidth={LINE_W + 1.6}
+                  strokeDasharray={
+                    selRow.dashed ? `${(LINE_W + 1.6) * 2.4} ${(LINE_W + 1.6) * 1.6}` : undefined
+                  }
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   filter="url(#sqglow)"
@@ -292,6 +296,7 @@ export function BumpChart({
               const y = yFor(last.pos);
               const isSel = row.id === selectedId;
               const dimmed = someSel && !isSel;
+              const col = dimmed ? DIM : row.color;
               return (
                 <g
                   key={`p${row.id}`}
@@ -300,8 +305,29 @@ export function BumpChart({
                   style={{ cursor: "pointer" }}
                   onClick={() => select(row.id)}
                 >
-                  <rect x={0} y={0} width={92} height={PILL_H} rx={6} fill={dimmed ? DIM : row.color} />
-                  <text x={9} y={PILL_H / 2 + 4} fontSize={11.5} fontWeight={800} fill="#0b0e14" fontFamily="var(--mono)" letterSpacing="0.3">
+                  <rect x={0} y={0} width={92} height={PILL_H} rx={6} fill={col} opacity={row.dashed ? 0.18 : 1} />
+                  {row.dashed && (
+                    <rect
+                      x={0.75}
+                      y={0.75}
+                      width={92 - 1.5}
+                      height={PILL_H - 1.5}
+                      rx={5.25}
+                      fill="none"
+                      stroke={col}
+                      strokeWidth={1.5}
+                      strokeDasharray="4 3"
+                    />
+                  )}
+                  <text
+                    x={9}
+                    y={PILL_H / 2 + 4}
+                    fontSize={11.5}
+                    fontWeight={800}
+                    fill={row.dashed ? col : "#0b0e14"}
+                    fontFamily="var(--mono)"
+                    letterSpacing="0.3"
+                  >
                     {row.short}
                   </text>
                   <text
@@ -310,7 +336,7 @@ export function BumpChart({
                     textAnchor="end"
                     fontSize={11.5}
                     fontWeight={800}
-                    fill="rgba(11,14,20,0.62)"
+                    fill={row.dashed ? col : "rgba(11,14,20,0.62)"}
                     fontFamily="var(--mono)"
                   >
                     {row.finalPos}
@@ -354,7 +380,7 @@ function StatCard({
   return (
     <div className="absolute right-[10px] top-[10px] z-20 w-[214px] max-w-[calc(100%-56px)] rounded-card border-[1.5px] border-line2 bg-[color-mix(in_oklab,var(--panel)_92%,transparent)] px-[14px] py-[13px] shadow-[var(--shadow)] backdrop-blur-[10px]">
       <div className="mb-[11px] flex items-center gap-[9px]">
-        <span className="size-4 flex-none rounded-full" style={{ background: row.color }} />
+        <Badge color={row.color} dashed={row.dashed} size={16} />
         <div className="min-w-0 flex-1">
           <div className="truncate font-head text-[15.5px] font-extrabold leading-[1.1] tracking-[-0.01em]">
             {row.name}
@@ -395,6 +421,26 @@ function StatCard({
         Tap the chart to scrub {roundLabel.toLowerCase()}s
       </div>
     </div>
+  );
+}
+
+/** Color swatch for a team — a ring with a conic dash pattern when the color is shared. */
+function Badge({ color, dashed, size }: { color: string; dashed: boolean; size: number }) {
+  return (
+    <span
+      className="flex-none rounded-full"
+      style={
+        dashed
+          ? {
+              width: size,
+              height: size,
+              background: `repeating-conic-gradient(${color} 0 25%, transparent 0 50%)`,
+              backgroundColor: "transparent",
+              boxShadow: `inset 0 0 0 2px ${color}`,
+            }
+          : { width: size, height: size, background: color }
+      }
+    />
   );
 }
 
@@ -449,7 +495,13 @@ function Legend({
               } ${off ? "opacity-[0.42]" : ""}`}
               style={on ? { borderColor: row.color, background: `color-mix(in oklab, ${row.color} 16%, var(--chip))` } : undefined}
             >
-              <span className="size-[10px] flex-none rounded-full" style={{ background: row.color }} />
+              <span
+                className="size-[10px] flex-none rounded-full"
+                style={{
+                  background: row.dashed ? "transparent" : row.color,
+                  boxShadow: row.dashed ? `inset 0 0 0 2px ${row.color}` : undefined,
+                }}
+              />
               <span className={`font-mono text-[11px] font-bold ${on ? "text-fg" : "text-fg3"}`}>{row.finalPos}</span>
               <span className="font-head text-[13px] font-bold tracking-[-0.01em]">{row.short}</span>
             </button>
