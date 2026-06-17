@@ -13,7 +13,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "convert:footballdata": "NODE_NO_WARNINGS=1 node scripts/convert-footballdata.ts"
+    "convert:footballdata": "NODE_NO_WARNINGS=1 node scripts/convert-footballdata.ts",
+    "seed": "NODE_NO_WARNINGS=1 node --env-file=.env scripts/seed-datasets.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
