@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Icon, type IconName } from "@/components/Icon";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { BumpChart } from "@/components/BumpChart";
@@ -26,13 +27,19 @@ export default async function DatasetPage({
   const { sport, league, season } = await params;
   const { entity } = await searchParams;
   const mode = entity === "constructors" ? "constructors" : "drivers";
+
+  // An unknown sport/league is a real 404; a known league with no dataset for this
+  // season gets the friendly "upload your own" state below.
+  const leagueCfg = getLeague(league);
+  if (!leagueCfg || leagueCfg.sport !== sport) notFound();
+
   const data = await getDatasetStandings({ sport, league, season, entity: mode });
-  const leagueName = getLeague(league)?.name ?? league;
 
   if (!data) {
-    return <NotFound leagueName={leagueName} season={season} />;
+    return <NotFound leagueName={leagueCfg.name} season={season} />;
   }
 
+  const leagueName = leagueCfg.name;
   const sportIcon = SPORT_ICON[data.sport] ?? "soccer";
   const variant = data.sport === "soccer" ? "soccer" : "f1";
   const unit = variant === "f1" ? "round" : "matchweek";

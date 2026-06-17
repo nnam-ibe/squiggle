@@ -266,10 +266,21 @@ function FileStep({ file, onFile }: { file: File | null; onFile: (f: File | null
   );
 }
 
-function IssueList({ title, issues, color }: { title: string; issues: { code: string; message: string; row?: number }[]; color: string }) {
+function IssueList({
+  title,
+  issues,
+  color,
+  role,
+}: {
+  title: string;
+  issues: { code: string; message: string; row?: number }[];
+  color: string;
+  role?: "alert" | "status";
+}) {
   if (!issues.length) return null;
   return (
     <div
+      role={role}
       className="rounded-card border-[1.5px] px-4 py-3"
       style={{ borderColor: `color-mix(in oklab, ${color} 45%, transparent)`, background: `color-mix(in oklab, ${color} 10%, transparent)` }}
     >
@@ -292,8 +303,8 @@ function PreviewStep({ preview }: { preview: PreviewResult }) {
   const table = preview.previewTable;
   return (
     <div className="flex flex-col gap-4">
-      <IssueList title="Errors" issues={preview.errors} color={RED} />
-      <IssueList title="Warnings" issues={preview.warnings} color="#e0894a" />
+      <IssueList title="Errors" issues={preview.errors} color={RED} role="alert" />
+      <IssueList title="Warnings" issues={preview.warnings} color="#e0894a" role="status" />
 
       {preview.ok && (
         <div className="font-mono text-[12px] text-fg2">
@@ -375,6 +386,7 @@ function ConfirmStep({
 
       {error && (
         <div
+          role="alert"
           className="rounded-card border-[1.5px] px-4 py-3 font-mono text-[12.5px]"
           style={{ borderColor: `color-mix(in oklab, ${RED} 45%, transparent)`, background: `color-mix(in oklab, ${RED} 10%, transparent)`, color: RED }}
         >
