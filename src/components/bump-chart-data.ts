@@ -15,14 +15,22 @@ export interface ChartPoint {
   pod: number;
 }
 
+/** Stroke pattern used to tell apart entities that share a brand color. */
+export type LineStyle = "solid" | "dashed" | "dotted";
+
 export interface ChartSeries {
   id: string;
   name: string;
   short: string;
   color: string;
   /** True when another entity in the season shares this color — render with a
-   * secondary cue (dashed stroke + outline-ring pill/dot) to stay distinguishable. */
+   * secondary cue (outline-ring pill/dot) to stay distinguishable. Equivalent to
+   * `lineStyle !== "solid"`. */
   dashed: boolean;
+  /** Stroke pattern for the line. Members of a shared-color group get distinct
+   * patterns (solid, then dashed, then dotted) — e.g. F1 teammates / mid-season
+   * driver swaps sharing a constructor color. */
+  lineStyle: LineStyle;
   finalPos: number;
   points: ChartPoint[];
 }
@@ -79,10 +87,12 @@ export function buildChartSeries(
     color: colors[name] ?? autoColor(name),
   }));
 
-  // Disambiguate entities that share a brand color within the season: the first
-  // by name keeps the solid stroke, the rest are dashed (a stable, results-
-  // independent assignment, so a team's style never flips between rounds).
-  const dashed = new Set<string>();
+  // Disambiguate entities that share a brand color within the season (F1 teammates
+  // share their constructor color; a few soccer clubs collide too). The first by
+  // name keeps a solid line; the rest cycle through distinct patterns so even a
+  // 3-driver constructor (a mid-season swap) stays distinguishable. The assignment
+  // is results-independent, so a line's style never flips between rounds.
+  const lineStyleByName = new Map<string, LineStyle>();
   const byColor = new Map<string, string[]>();
   for (const r of resolved) {
     const key = r.color.toLowerCase();
@@ -93,18 +103,26 @@ export function buildChartSeries(
   for (const group of byColor.values()) {
     if (group.length < 2) continue;
     group.sort((a, b) => a.localeCompare(b));
-    for (const name of group.slice(1)) dashed.add(name);
+    group.forEach((name, i) => {
+      if (i === 0) return; // first stays solid
+      // 1 → dashed, 2 → dotted, then alternate so neighbours always differ.
+      lineStyleByName.set(name, i % 2 === 1 ? "dashed" : "dotted");
+    });
   }
 
   return resolved
-    .map(({ name, points, color }) => ({
-      id: name,
-      name,
-      short: shorts[name] ?? abbreviate(name),
-      color,
-      dashed: dashed.has(name),
-      finalPos: finalPos.get(name) ?? points.at(-1)!.pos,
-      points,
-    }))
+    .map(({ name, points, color }) => {
+      const lineStyle = lineStyleByName.get(name) ?? "solid";
+      return {
+        id: name,
+        name,
+        short: shorts[name] ?? abbreviate(name),
+        color,
+        lineStyle,
+        dashed: lineStyle !== "solid",
+        finalPos: finalPos.get(name) ?? points.at(-1)!.pos,
+        points,
+      };
+    })
     .sort((a, b) => a.finalPos - b.finalPos);
 }

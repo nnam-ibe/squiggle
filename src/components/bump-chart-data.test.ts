@@ -56,8 +56,34 @@ describe("buildChartSeries", () => {
       { Arsenal: "#000000", Chelsea: "#000000" },
       {},
     );
+    expect(series.find((s) => s.id === "Arsenal")!.lineStyle).toBe("solid");
     expect(series.find((s) => s.id === "Arsenal")!.dashed).toBe(false);
+    expect(series.find((s) => s.id === "Chelsea")!.lineStyle).toBe("dashed");
     expect(series.find((s) => s.id === "Chelsea")!.dashed).toBe(true);
+  });
+
+  it("gives three same-color entities distinct line styles (F1 mid-season driver swap)", () => {
+    // Three drivers share a constructor color across the season → solid/dashed/dotted.
+    const swap: Standings = {
+      entityType: "driver",
+      rounds: [
+        {
+          round: 1,
+          cutoffDate: "2024-03-02",
+          standings: [
+            { entity: "Albon", position: 1, points: 10, stats: { wins: 0, podiums: 0, entries: 1 } },
+            { entity: "Colapinto", position: 2, points: 6, stats: { wins: 0, podiums: 0, entries: 1 } },
+            { entity: "Sargeant", position: 3, points: 2, stats: { wins: 0, podiums: 0, entries: 1 } },
+          ],
+        },
+      ],
+    };
+    const williams = "#64C4FF";
+    const series = buildChartSeries(swap, { Albon: williams, Colapinto: williams, Sargeant: williams }, {});
+    // sorted by name within the group: Albon, Colapinto, Sargeant
+    expect(series.find((s) => s.id === "Albon")!.lineStyle).toBe("solid");
+    expect(series.find((s) => s.id === "Colapinto")!.lineStyle).toBe("dashed");
+    expect(series.find((s) => s.id === "Sargeant")!.lineStyle).toBe("dotted");
   });
 
   it("surfaces F1 wins/podiums (not soccer W-D-L) for driver/constructor standings", () => {
