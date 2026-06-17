@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { ChartPoint, ChartSeries } from "./bump-chart-data";
+import type { ChartPoint, ChartSeries, LineStyle } from "./bump-chart-data";
 
 /** Catmull-Rom smoothed path through the points (design default line shape). */
 function smoothPath(pts: { x: number; y: number }[]): string {
@@ -32,6 +32,13 @@ const DIM = "var(--bump-dim)";
 
 const GOOD = "#3ee07f";
 const BAD = "#ff6b6b";
+
+/** SVG dash pattern for a line of the given style + stroke width (round-capped). */
+function dashArrayFor(style: LineStyle, w: number): string | undefined {
+  if (style === "dashed") return `${(w * 2.4).toFixed(1)} ${(w * 1.7).toFixed(1)}`;
+  if (style === "dotted") return `0.01 ${(w * 1.9).toFixed(1)}`;
+  return undefined; // solid
+}
 
 export function BumpChart({
   series,
@@ -219,7 +226,7 @@ export function BumpChart({
                     fill="none"
                     stroke={someSel ? DIM : row.color}
                     strokeWidth={someSel ? 1.6 : LINE_W}
-                    strokeDasharray={row.dashed ? `${LINE_W * 2.6} ${LINE_W * 1.8}` : undefined}
+                    strokeDasharray={dashArrayFor(row.lineStyle, LINE_W)}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     style={{ transition: "stroke .25s, stroke-width .2s, opacity .25s" }}
@@ -243,9 +250,7 @@ export function BumpChart({
                   fill="none"
                   stroke={selRow.color}
                   strokeWidth={LINE_W + 1.6}
-                  strokeDasharray={
-                    selRow.dashed ? `${(LINE_W + 1.6) * 2.4} ${(LINE_W + 1.6) * 1.6}` : undefined
-                  }
+                  strokeDasharray={dashArrayFor(selRow.lineStyle, LINE_W + 1.6)}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   filter="url(#sqglow)"
