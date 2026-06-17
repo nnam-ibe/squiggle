@@ -34,8 +34,8 @@ describe("buildChartSeries", () => {
     expect(series.map((s) => s.id)).toEqual(["Chelsea", "Arsenal"]); // final pos 1, 2
     const arsenal = series.find((s) => s.id === "Arsenal")!;
     expect(arsenal.points).toEqual([
-      { round: 1, pos: 1, pts: 3, w: 0, d: 0, l: 0, gd: 0 },
-      { round: 2, pos: 2, pts: 3, w: 0, d: 0, l: 0, gd: 0 },
+      { round: 1, pos: 1, pts: 3, w: 0, d: 0, l: 0, gd: 0, pod: 0 },
+      { round: 2, pos: 2, pts: 3, w: 0, d: 0, l: 0, gd: 0, pod: 0 },
     ]);
     expect(arsenal.finalPos).toBe(2);
     expect(arsenal.short).toBe("ARS");
@@ -58,6 +58,25 @@ describe("buildChartSeries", () => {
     );
     expect(series.find((s) => s.id === "Arsenal")!.dashed).toBe(false);
     expect(series.find((s) => s.id === "Chelsea")!.dashed).toBe(true);
+  });
+
+  it("surfaces F1 wins/podiums (not soccer W-D-L) for driver/constructor standings", () => {
+    const f1: Standings = {
+      entityType: "driver",
+      rounds: [
+        {
+          round: 1,
+          cutoffDate: "2024-03-02",
+          standings: [
+            { entity: "Verstappen", position: 1, points: 25, stats: { wins: 1, podiums: 1, entries: 1 } },
+            { entity: "Norris", position: 2, points: 18, stats: { wins: 0, podiums: 1, entries: 1 } },
+          ],
+        },
+      ],
+    };
+    const series = buildChartSeries(f1, {}, {});
+    const max = series.find((s) => s.id === "Verstappen")!;
+    expect(max.points[0]).toEqual({ round: 1, pos: 1, pts: 25, w: 1, d: 0, l: 0, gd: 0, pod: 1 });
   });
 
   it("leaves distinct colors solid (case-insensitive comparison)", () => {

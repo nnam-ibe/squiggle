@@ -5,11 +5,14 @@ export interface ChartPoint {
   pos: number;
   /** Cumulative points at this round (drives the StatCard / tooltip). */
   pts: number;
-  /** Soccer per-round record + goal difference (0 when the sport doesn't track them). */
+  /** Wins so far — soccer wins, or F1 race wins. */
   w: number;
+  /** Soccer draws / losses / goal difference (0 for F1). */
   d: number;
   l: number;
   gd: number;
+  /** F1 podiums so far (0 for soccer). */
+  pod: number;
 }
 
 export interface ChartSeries {
@@ -46,6 +49,7 @@ export function buildChartSeries(
   colors: Record<string, string>,
   shorts: Record<string, string>,
 ): ChartSeries[] {
+  const isF1 = standings.entityType !== "team";
   const byEntity = new Map<string, ChartPoint[]>();
   for (const snap of standings.rounds) {
     for (const s of snap.standings) {
@@ -54,10 +58,11 @@ export function buildChartSeries(
         round: snap.round,
         pos: s.position,
         pts: s.points,
-        w: s.stats.won ?? 0,
-        d: s.stats.drawn ?? 0,
-        l: s.stats.lost ?? 0,
-        gd: s.stats.gd ?? 0,
+        w: (isF1 ? s.stats.wins : s.stats.won) ?? 0,
+        d: isF1 ? 0 : (s.stats.drawn ?? 0),
+        l: isF1 ? 0 : (s.stats.lost ?? 0),
+        gd: isF1 ? 0 : (s.stats.gd ?? 0),
+        pod: isF1 ? (s.stats.podiums ?? 0) : 0,
       });
       byEntity.set(s.entity, list);
     }

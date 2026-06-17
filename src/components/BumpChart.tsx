@@ -36,10 +36,13 @@ const BAD = "#ff6b6b";
 export function BumpChart({
   series,
   rounds,
-  roundLabel = "Matchweek",
+  variant = "soccer",
+  roundLabel = variant === "f1" ? "Round" : "Matchweek",
 }: {
   series: ChartSeries[];
   rounds: number;
+  /** Picks the StatCard layout: soccer (W-D-L / GD) or F1 (wins / podiums). */
+  variant?: "soccer" | "f1";
   /** Singular x-axis unit shown in the stat card, e.g. "Matchweek" or "Round". */
   roundLabel?: string;
 }) {
@@ -353,6 +356,7 @@ export function BumpChart({
             h={focusH}
             round={clampedFocus}
             roundLabel={roundLabel}
+            variant={variant}
             onClose={() => setSelectedId(null)}
           />
         )}
@@ -368,12 +372,14 @@ function StatCard({
   h,
   round,
   roundLabel,
+  variant,
   onClose,
 }: {
   row: ChartSeries;
   h: ChartPoint;
   round: number;
   roundLabel: string;
+  variant: "soccer" | "f1";
   onClose: () => void;
 }) {
   const played = h.w + h.d + h.l;
@@ -405,17 +411,26 @@ function StatCard({
         </span>
       </div>
 
-      <div className="mb-[10px] grid grid-cols-3 gap-2">
-        <Stat label="Points" value={h.pts} />
-        <Stat label="Played" value={played} />
-        <Stat label="GD" value={`${h.gd >= 0 ? "+" : ""}${h.gd}`} tone={h.gd >= 0 ? "good" : "bad"} />
-      </div>
-
-      <div className="mb-[9px] flex gap-[7px]">
-        <Wdl label="W" value={h.w} color={GOOD} />
-        <Wdl label="D" value={h.d} color="var(--fg2)" />
-        <Wdl label="L" value={h.l} color={BAD} />
-      </div>
+      {variant === "f1" ? (
+        <div className="mb-[10px] grid grid-cols-3 gap-2">
+          <Stat label="Points" value={h.pts} />
+          <Stat label="Wins" value={h.w} tone={h.w > 0 ? "good" : undefined} />
+          <Stat label="Podiums" value={h.pod} />
+        </div>
+      ) : (
+        <>
+          <div className="mb-[10px] grid grid-cols-3 gap-2">
+            <Stat label="Points" value={h.pts} />
+            <Stat label="Played" value={played} />
+            <Stat label="GD" value={`${h.gd >= 0 ? "+" : ""}${h.gd}`} tone={h.gd >= 0 ? "good" : "bad"} />
+          </div>
+          <div className="mb-[9px] flex gap-[7px]">
+            <Wdl label="W" value={h.w} color={GOOD} />
+            <Wdl label="D" value={h.d} color="var(--fg2)" />
+            <Wdl label="L" value={h.l} color={BAD} />
+          </div>
+        </>
+      )}
 
       <div className="text-center font-mono text-[10.5px] tracking-[0.02em] text-fg3">
         Tap the chart to scrub {roundLabel.toLowerCase()}s
