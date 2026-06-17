@@ -4,7 +4,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { BumpChart } from "@/components/BumpChart";
 import { buildChartSeries } from "@/components/bump-chart-data";
 import { getLeague } from "@/config/leagues";
-import { getDatasetStandings } from "@/server/datasets";
+import { getDatasetStandings, type EntityMode } from "@/server/datasets";
+
+const ENTITY_LABEL: Record<EntityMode, string> = { drivers: "Drivers", constructors: "Constructors" };
 
 export const dynamic = "force-dynamic"; // reads the DB at request time
 
@@ -16,11 +18,15 @@ function prettySeason(season: string) {
 
 export default async function DatasetPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ sport: string; league: string; season: string }>;
+  searchParams: Promise<{ entity?: string }>;
 }) {
   const { sport, league, season } = await params;
-  const data = await getDatasetStandings({ sport, league, season });
+  const { entity } = await searchParams;
+  const mode = entity === "constructors" ? "constructors" : "drivers";
+  const data = await getDatasetStandings({ sport, league, season, entity: mode });
   const leagueName = getLeague(league)?.name ?? league;
 
   if (!data) {
@@ -28,6 +34,8 @@ export default async function DatasetPage({
   }
 
   const sportIcon = SPORT_ICON[data.sport] ?? "soccer";
+  const variant = data.sport === "soccer" ? "soccer" : "f1";
+  const unit = variant === "f1" ? "round" : "matchweek";
   const series = buildChartSeries(data.standings, data.colors, data.shorts);
 
   return (
@@ -52,16 +60,71 @@ export default async function DatasetPage({
               </span>
             </div>
             <div className="mt-[2px] truncate text-[12px] text-fg2">
-              Position after each matchweek{data.isComplete ? "" : " · in progress"}
+              Position after each {unit}{data.isComplete ? "" : " · in progress"}
             </div>
           </div>
         </div>
         <ThemeToggle />
       </header>
 
+      {data.entities && (
+        <EntityToggle
+          sport={sport}
+          league={league}
+          season={season}
+          entities={data.entities}
+          active={data.entity}
+        />
+      )}
+
       <div className="flex-1 px-3 py-4 sm:px-[18px]">
-        <BumpChart series={series} rounds={data.standings.rounds.length} />
+        <BumpChart series={series} rounds={data.standings.rounds.length} variant={variant} />
       </div>
+    </div>
+  );
+}
+
+/**
+ * Drivers/Constructors segmented control for F1. Rendered as links so each mode is a
+ * shareable permalink (`?entity=…`) and the standings are recomputed server-side.
+ */
+function EntityToggle({
+  sport,
+  league,
+  season,
+  entities,
+  active,
+}: {
+  sport: string;
+  league: string;
+  season: string;
+  entities: EntityMode[];
+  active: EntityMode | null;
+}) {
+  const base = `/${sport}/${league}/${encodeURIComponent(season)}`;
+  return (
+    <div
+      role="tablist"
+      aria-label="Standings type"
+      className="mx-4 mt-[14px] mb-1 flex w-fit gap-1 rounded-[13px] border border-line bg-panel p-1"
+    >
+      {entities.map((m) => {
+        const on = m === active;
+        return (
+          <Link
+            key={m}
+            href={`${base}?entity=${m}`}
+            role="tab"
+            aria-selected={on}
+            scroll={false}
+            className={`rounded-[9px] px-[18px] py-2 font-head text-[14px] font-bold transition-colors ${
+              on ? "bg-accent text-acc-ink" : "text-fg2 hover:text-fg"
+            }`}
+          >
+            {ENTITY_LABEL[m]}
+          </Link>
+        );
+      })}
     </div>
   );
 }
