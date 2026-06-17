@@ -1,0 +1,201 @@
+{
+  "season": "2024",
+  "drivers": [
+    {
+      "pos": 1,
+      "name": "Max Verstappen",
+      "points": 437,
+      "wins": 9
+    },
+    {
+      "pos": 2,
+      "name": "Lando Norris",
+      "points": 374,
+      "wins": 4
+    },
+    {
+      "pos": 3,
+      "name": "Charles Leclerc",
+      "points": 356,
+      "wins": 3
+    },
+    {
+      "pos": 4,
+      "name": "Oscar Piastri",
+      "points": 292,
+      "wins": 2
+    },
+    {
+      "pos": 5,
+      "name": "Carlos Sainz",
+      "points": 290,
+      "wins": 2
+    },
+    {
+      "pos": 6,
+      "name": "George Russell",
+      "points": 245,
+      "wins": 2
+    },
+    {
+      "pos": 7,
+      "name": "Lewis Hamilton",
+      "points": 223,
+      "wins": 2
+    },
+    {
+      "pos": 8,
+      "name": "Sergio Pérez",
+      "points": 152,
+      "wins": 0
+    },
+    {
+      "pos": 9,
+      "name": "Fernando Alonso",
+      "points": 70,
+      "wins": 0
+    },
+    {
+      "pos": 10,
+      "name": "Pierre Gasly",
+      "points": 42,
+      "wins": 0
+    },
+    {
+      "pos": 11,
+      "name": "Nico Hülkenberg",
+      "points": 41,
+      "wins": 0
+    },
+    {
+      "pos": 12,
+      "name": "Yuki Tsunoda",
+      "points": 30,
+      "wins": 0
+    },
+    {
+      "pos": 13,
+      "name": "Lance Stroll",
+      "points": 24,
+      "wins": 0
+    },
+    {
+      "pos": 14,
+      "name": "Esteban Ocon",
+      "points": 23,
+      "wins": 0
+    },
+    {
+      "pos": 15,
+      "name": "Kevin Magnussen",
+      "points": 16,
+      "wins": 0
+    },
+    {
+      "pos": 16,
+      "name": "Alexander Albon",
+      "points": 12,
+      "wins": 0
+    },
+    {
+      "pos": 17,
+      "name": "Daniel Ricciardo",
+      "points": 12,
+      "wins": 0
+    },
+    {
+      "pos": 18,
+      "name": "Oliver Bearman",
+      "points": 7,
+      "wins": 0
+    },
+    {
+      "pos": 19,
+      "name": "Franco Colapinto",
+      "points": 5,
+      "wins": 0
+    },
+    {
+      "pos": 20,
+      "name": "Guanyu Zhou",
+      "points": 4,
+      "wins": 0
+    },
+    {
+      "pos": 21,
+      "name": "Liam Lawson",
+      "points": 4,
+      "wins": 0
+    },
+    {
+      "pos": 22,
+      "name": "Valtteri Bottas",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "pos": 23,
+      "name": "Logan Sargeant",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "pos": 24,
+      "name": "Jack Doohan",
+      "points": 0,
+      "wins": 0
+    }
+  ],
+  "constructors": [
+    {
+      "pos": 1,
+      "name": "McLaren",
+      "points": 666
+    },
+    {
+      "pos": 2,
+      "name": "Ferrari",
+      "points": 652
+    },
+    {
+      "pos": 3,
+      "name": "Red Bull Racing",
+      "points": 589
+    },
+    {
+      "pos": 4,
+      "name": "Mercedes",
+      "points": 468
+    },
+    {
+      "pos": 5,
+      "name": "Aston Martin",
+      "points": 94
+    },
+    {
+      "pos": 6,
+      "name": "Alpine",
+      "points": 65
+    },
+    {
+      "pos": 7,
+      "name": "Haas",
+      "points": 58
+    },
+    {
+      "pos": 8,
+      "name": "RB",
+      "points": 46
+    },
+    {
+      "pos": 9,
+      "name": "Williams",
+      "points": 17
+    },
+    {
+      "pos": 10,
+      "name": "Kick Sauber",
+      "points": 4
+    }
+  ]
+}
