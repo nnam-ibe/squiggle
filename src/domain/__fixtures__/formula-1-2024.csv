@@ -1,0 +1,480 @@
+round,date,race,driver,constructor,finish_position,fastest_lap,sprint_position
+1,2024-03-02,Bahrain Grand Prix,Max Verstappen,Red Bull Racing,1,true,
+1,2024-03-02,Bahrain Grand Prix,Sergio Pérez,Red Bull Racing,2,false,
+1,2024-03-02,Bahrain Grand Prix,Carlos Sainz,Ferrari,3,false,
+1,2024-03-02,Bahrain Grand Prix,Charles Leclerc,Ferrari,4,false,
+1,2024-03-02,Bahrain Grand Prix,George Russell,Mercedes,5,false,
+1,2024-03-02,Bahrain Grand Prix,Lando Norris,McLaren,6,false,
+1,2024-03-02,Bahrain Grand Prix,Lewis Hamilton,Mercedes,7,false,
+1,2024-03-02,Bahrain Grand Prix,Oscar Piastri,McLaren,8,false,
+1,2024-03-02,Bahrain Grand Prix,Fernando Alonso,Aston Martin,9,false,
+1,2024-03-02,Bahrain Grand Prix,Lance Stroll,Aston Martin,10,false,
+1,2024-03-02,Bahrain Grand Prix,Guanyu Zhou,Kick Sauber,11,false,
+1,2024-03-02,Bahrain Grand Prix,Kevin Magnussen,Haas,12,false,
+1,2024-03-02,Bahrain Grand Prix,Daniel Ricciardo,RB,13,false,
+1,2024-03-02,Bahrain Grand Prix,Yuki Tsunoda,RB,14,false,
+1,2024-03-02,Bahrain Grand Prix,Alexander Albon,Williams,15,false,
+1,2024-03-02,Bahrain Grand Prix,Nico Hülkenberg,Haas,16,false,
+1,2024-03-02,Bahrain Grand Prix,Esteban Ocon,Alpine,17,false,
+1,2024-03-02,Bahrain Grand Prix,Pierre Gasly,Alpine,18,false,
+1,2024-03-02,Bahrain Grand Prix,Valtteri Bottas,Kick Sauber,19,false,
+1,2024-03-02,Bahrain Grand Prix,Logan Sargeant,Williams,20,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Max Verstappen,Red Bull Racing,1,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Sergio Pérez,Red Bull Racing,2,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Charles Leclerc,Ferrari,3,true,
+2,2024-03-09,Saudi Arabian Grand Prix,Oscar Piastri,McLaren,4,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Fernando Alonso,Aston Martin,5,false,
+2,2024-03-09,Saudi Arabian Grand Prix,George Russell,Mercedes,6,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Oliver Bearman,Ferrari,7,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Lando Norris,McLaren,8,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Lewis Hamilton,Mercedes,9,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Nico Hülkenberg,Haas,10,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Alexander Albon,Williams,11,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Kevin Magnussen,Haas,12,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Esteban Ocon,Alpine,13,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Logan Sargeant,Williams,14,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Yuki Tsunoda,RB,15,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Daniel Ricciardo,RB,16,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Valtteri Bottas,Kick Sauber,17,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Guanyu Zhou,Kick Sauber,18,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Lance Stroll,Aston Martin,DNF,false,
+2,2024-03-09,Saudi Arabian Grand Prix,Pierre Gasly,Alpine,DNF,false,
+3,2024-03-24,Australian Grand Prix,Carlos Sainz,Ferrari,1,false,
+3,2024-03-24,Australian Grand Prix,Charles Leclerc,Ferrari,2,true,
+3,2024-03-24,Australian Grand Prix,Lando Norris,McLaren,3,false,
+3,2024-03-24,Australian Grand Prix,Oscar Piastri,McLaren,4,false,
+3,2024-03-24,Australian Grand Prix,Sergio Pérez,Red Bull Racing,5,false,
+3,2024-03-24,Australian Grand Prix,Lance Stroll,Aston Martin,6,false,
+3,2024-03-24,Australian Grand Prix,Yuki Tsunoda,RB,7,false,
+3,2024-03-24,Australian Grand Prix,Fernando Alonso,Aston Martin,8,false,
+3,2024-03-24,Australian Grand Prix,Nico Hülkenberg,Haas,9,false,
+3,2024-03-24,Australian Grand Prix,Kevin Magnussen,Haas,10,false,
+3,2024-03-24,Australian Grand Prix,Alexander Albon,Williams,11,false,
+3,2024-03-24,Australian Grand Prix,Daniel Ricciardo,RB,12,false,
+3,2024-03-24,Australian Grand Prix,Pierre Gasly,Alpine,13,false,
+3,2024-03-24,Australian Grand Prix,Valtteri Bottas,Kick Sauber,14,false,
+3,2024-03-24,Australian Grand Prix,Guanyu Zhou,Kick Sauber,15,false,
+3,2024-03-24,Australian Grand Prix,Esteban Ocon,Alpine,16,false,
+3,2024-03-24,Australian Grand Prix,George Russell,Mercedes,17,false,
+3,2024-03-24,Australian Grand Prix,Lewis Hamilton,Mercedes,DNF,false,
+3,2024-03-24,Australian Grand Prix,Max Verstappen,Red Bull Racing,DNF,false,
+4,2024-04-07,Japanese Grand Prix,Max Verstappen,Red Bull Racing,1,true,
+4,2024-04-07,Japanese Grand Prix,Sergio Pérez,Red Bull Racing,2,false,
+4,2024-04-07,Japanese Grand Prix,Carlos Sainz,Ferrari,3,false,
+4,2024-04-07,Japanese Grand Prix,Charles Leclerc,Ferrari,4,false,
+4,2024-04-07,Japanese Grand Prix,Lando Norris,McLaren,5,false,
+4,2024-04-07,Japanese Grand Prix,Fernando Alonso,Aston Martin,6,false,
+4,2024-04-07,Japanese Grand Prix,George Russell,Mercedes,7,false,
+4,2024-04-07,Japanese Grand Prix,Oscar Piastri,McLaren,8,false,
+4,2024-04-07,Japanese Grand Prix,Lewis Hamilton,Mercedes,9,false,
+4,2024-04-07,Japanese Grand Prix,Yuki Tsunoda,RB,10,false,
+4,2024-04-07,Japanese Grand Prix,Nico Hülkenberg,Haas,11,false,
+4,2024-04-07,Japanese Grand Prix,Lance Stroll,Aston Martin,12,false,
+4,2024-04-07,Japanese Grand Prix,Kevin Magnussen,Haas,13,false,
+4,2024-04-07,Japanese Grand Prix,Valtteri Bottas,Kick Sauber,14,false,
+4,2024-04-07,Japanese Grand Prix,Esteban Ocon,Alpine,15,false,
+4,2024-04-07,Japanese Grand Prix,Pierre Gasly,Alpine,16,false,
+4,2024-04-07,Japanese Grand Prix,Logan Sargeant,Williams,17,false,
+4,2024-04-07,Japanese Grand Prix,Guanyu Zhou,Kick Sauber,DNF,false,
+4,2024-04-07,Japanese Grand Prix,Daniel Ricciardo,RB,DNF,false,
+4,2024-04-07,Japanese Grand Prix,Alexander Albon,Williams,DNF,false,
+5,2024-04-21,Chinese Grand Prix,Max Verstappen,Red Bull Racing,1,false,1
+5,2024-04-21,Chinese Grand Prix,Lando Norris,McLaren,2,false,6
+5,2024-04-21,Chinese Grand Prix,Sergio Pérez,Red Bull Racing,3,false,3
+5,2024-04-21,Chinese Grand Prix,Charles Leclerc,Ferrari,4,false,4
+5,2024-04-21,Chinese Grand Prix,Carlos Sainz,Ferrari,5,false,5
+5,2024-04-21,Chinese Grand Prix,George Russell,Mercedes,6,false,8
+5,2024-04-21,Chinese Grand Prix,Fernando Alonso,Aston Martin,7,true,20
+5,2024-04-21,Chinese Grand Prix,Oscar Piastri,McLaren,8,false,7
+5,2024-04-21,Chinese Grand Prix,Lewis Hamilton,Mercedes,9,false,2
+5,2024-04-21,Chinese Grand Prix,Nico Hülkenberg,Haas,10,false,19
+5,2024-04-21,Chinese Grand Prix,Esteban Ocon,Alpine,11,false,13
+5,2024-04-21,Chinese Grand Prix,Alexander Albon,Williams,12,false,17
+5,2024-04-21,Chinese Grand Prix,Pierre Gasly,Alpine,13,false,15
+5,2024-04-21,Chinese Grand Prix,Guanyu Zhou,Kick Sauber,14,false,9
+5,2024-04-21,Chinese Grand Prix,Lance Stroll,Aston Martin,15,false,14
+5,2024-04-21,Chinese Grand Prix,Kevin Magnussen,Haas,16,false,10
+5,2024-04-21,Chinese Grand Prix,Logan Sargeant,Williams,17,false,18
+5,2024-04-21,Chinese Grand Prix,Daniel Ricciardo,RB,DNF,false,11
+5,2024-04-21,Chinese Grand Prix,Yuki Tsunoda,RB,DNF,false,16
+5,2024-04-21,Chinese Grand Prix,Valtteri Bottas,Kick Sauber,DNF,false,12
+6,2024-05-05,Miami Grand Prix,Lando Norris,McLaren,1,false,
+6,2024-05-05,Miami Grand Prix,Max Verstappen,Red Bull Racing,2,false,1
+6,2024-05-05,Miami Grand Prix,Charles Leclerc,Ferrari,3,false,2
+6,2024-05-05,Miami Grand Prix,Sergio Pérez,Red Bull Racing,4,false,3
+6,2024-05-05,Miami Grand Prix,Carlos Sainz,Ferrari,5,false,5
+6,2024-05-05,Miami Grand Prix,Lewis Hamilton,Mercedes,6,false,16
+6,2024-05-05,Miami Grand Prix,Yuki Tsunoda,RB,7,false,8
+6,2024-05-05,Miami Grand Prix,George Russell,Mercedes,8,false,12
+6,2024-05-05,Miami Grand Prix,Fernando Alonso,Aston Martin,9,false,17
+6,2024-05-05,Miami Grand Prix,Esteban Ocon,Alpine,10,false,15
+6,2024-05-05,Miami Grand Prix,Nico Hülkenberg,Haas,11,false,7
+6,2024-05-05,Miami Grand Prix,Pierre Gasly,Alpine,12,false,9
+6,2024-05-05,Miami Grand Prix,Oscar Piastri,McLaren,13,true,6
+6,2024-05-05,Miami Grand Prix,Guanyu Zhou,Kick Sauber,14,false,11
+6,2024-05-05,Miami Grand Prix,Daniel Ricciardo,RB,15,false,4
+6,2024-05-05,Miami Grand Prix,Valtteri Bottas,Kick Sauber,16,false,14
+6,2024-05-05,Miami Grand Prix,Lance Stroll,Aston Martin,17,false,
+6,2024-05-05,Miami Grand Prix,Alexander Albon,Williams,18,false,13
+6,2024-05-05,Miami Grand Prix,Kevin Magnussen,Haas,19,false,18
+6,2024-05-05,Miami Grand Prix,Logan Sargeant,Williams,DNF,false,10
+7,2024-05-19,Emilia Romagna Grand Prix,Max Verstappen,Red Bull Racing,1,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Lando Norris,McLaren,2,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Charles Leclerc,Ferrari,3,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Oscar Piastri,McLaren,4,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Carlos Sainz,Ferrari,5,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Lewis Hamilton,Mercedes,6,false,
+7,2024-05-19,Emilia Romagna Grand Prix,George Russell,Mercedes,7,true,
+7,2024-05-19,Emilia Romagna Grand Prix,Sergio Pérez,Red Bull Racing,8,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Lance Stroll,Aston Martin,9,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Yuki Tsunoda,RB,10,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Nico Hülkenberg,Haas,11,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Kevin Magnussen,Haas,12,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Daniel Ricciardo,RB,13,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Esteban Ocon,Alpine,14,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Guanyu Zhou,Kick Sauber,15,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Pierre Gasly,Alpine,16,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Logan Sargeant,Williams,17,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Valtteri Bottas,Kick Sauber,18,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Fernando Alonso,Aston Martin,19,false,
+7,2024-05-19,Emilia Romagna Grand Prix,Alexander Albon,Williams,DNF,false,
+8,2024-05-26,Monaco Grand Prix,Charles Leclerc,Ferrari,1,false,
+8,2024-05-26,Monaco Grand Prix,Oscar Piastri,McLaren,2,false,
+8,2024-05-26,Monaco Grand Prix,Carlos Sainz,Ferrari,3,false,
+8,2024-05-26,Monaco Grand Prix,Lando Norris,McLaren,4,false,
+8,2024-05-26,Monaco Grand Prix,George Russell,Mercedes,5,false,
+8,2024-05-26,Monaco Grand Prix,Max Verstappen,Red Bull Racing,6,false,
+8,2024-05-26,Monaco Grand Prix,Lewis Hamilton,Mercedes,7,true,
+8,2024-05-26,Monaco Grand Prix,Yuki Tsunoda,RB,8,false,
+8,2024-05-26,Monaco Grand Prix,Alexander Albon,Williams,9,false,
+8,2024-05-26,Monaco Grand Prix,Pierre Gasly,Alpine,10,false,
+8,2024-05-26,Monaco Grand Prix,Fernando Alonso,Aston Martin,11,false,
+8,2024-05-26,Monaco Grand Prix,Daniel Ricciardo,RB,12,false,
+8,2024-05-26,Monaco Grand Prix,Valtteri Bottas,Kick Sauber,13,false,
+8,2024-05-26,Monaco Grand Prix,Lance Stroll,Aston Martin,14,false,
+8,2024-05-26,Monaco Grand Prix,Logan Sargeant,Williams,15,false,
+8,2024-05-26,Monaco Grand Prix,Guanyu Zhou,Kick Sauber,16,false,
+8,2024-05-26,Monaco Grand Prix,Esteban Ocon,Alpine,DNF,false,
+8,2024-05-26,Monaco Grand Prix,Sergio Pérez,Red Bull Racing,DNF,false,
+8,2024-05-26,Monaco Grand Prix,Nico Hülkenberg,Haas,DNF,false,
+8,2024-05-26,Monaco Grand Prix,Kevin Magnussen,Haas,DNF,false,
+9,2024-06-09,Canadian Grand Prix,Max Verstappen,Red Bull Racing,1,false,
+9,2024-06-09,Canadian Grand Prix,Lando Norris,McLaren,2,false,
+9,2024-06-09,Canadian Grand Prix,George Russell,Mercedes,3,false,
+9,2024-06-09,Canadian Grand Prix,Lewis Hamilton,Mercedes,4,true,
+9,2024-06-09,Canadian Grand Prix,Oscar Piastri,McLaren,5,false,
+9,2024-06-09,Canadian Grand Prix,Fernando Alonso,Aston Martin,6,false,
+9,2024-06-09,Canadian Grand Prix,Lance Stroll,Aston Martin,7,false,
+9,2024-06-09,Canadian Grand Prix,Daniel Ricciardo,RB,8,false,
+9,2024-06-09,Canadian Grand Prix,Pierre Gasly,Alpine,9,false,
+9,2024-06-09,Canadian Grand Prix,Esteban Ocon,Alpine,10,false,
+9,2024-06-09,Canadian Grand Prix,Nico Hülkenberg,Haas,11,false,
+9,2024-06-09,Canadian Grand Prix,Kevin Magnussen,Haas,12,false,
+9,2024-06-09,Canadian Grand Prix,Valtteri Bottas,Kick Sauber,13,false,
+9,2024-06-09,Canadian Grand Prix,Yuki Tsunoda,RB,14,false,
+9,2024-06-09,Canadian Grand Prix,Guanyu Zhou,Kick Sauber,15,false,
+9,2024-06-09,Canadian Grand Prix,Carlos Sainz,Ferrari,DNF,false,
+9,2024-06-09,Canadian Grand Prix,Alexander Albon,Williams,DNF,false,
+9,2024-06-09,Canadian Grand Prix,Sergio Pérez,Red Bull Racing,DNF,false,
+9,2024-06-09,Canadian Grand Prix,Charles Leclerc,Ferrari,DNF,false,
+9,2024-06-09,Canadian Grand Prix,Logan Sargeant,Williams,DNF,false,
+10,2024-06-23,Spanish Grand Prix,Max Verstappen,Red Bull Racing,1,false,
+10,2024-06-23,Spanish Grand Prix,Lando Norris,McLaren,2,true,
+10,2024-06-23,Spanish Grand Prix,Lewis Hamilton,Mercedes,3,false,
+10,2024-06-23,Spanish Grand Prix,George Russell,Mercedes,4,false,
+10,2024-06-23,Spanish Grand Prix,Charles Leclerc,Ferrari,5,false,
+10,2024-06-23,Spanish Grand Prix,Carlos Sainz,Ferrari,6,false,
+10,2024-06-23,Spanish Grand Prix,Oscar Piastri,McLaren,7,false,
+10,2024-06-23,Spanish Grand Prix,Sergio Pérez,Red Bull Racing,8,false,
+10,2024-06-23,Spanish Grand Prix,Pierre Gasly,Alpine,9,false,
+10,2024-06-23,Spanish Grand Prix,Esteban Ocon,Alpine,10,false,
+10,2024-06-23,Spanish Grand Prix,Nico Hülkenberg,Haas,11,false,
+10,2024-06-23,Spanish Grand Prix,Fernando Alonso,Aston Martin,12,false,
+10,2024-06-23,Spanish Grand Prix,Guanyu Zhou,Kick Sauber,13,false,
+10,2024-06-23,Spanish Grand Prix,Lance Stroll,Aston Martin,14,false,
+10,2024-06-23,Spanish Grand Prix,Daniel Ricciardo,RB,15,false,
+10,2024-06-23,Spanish Grand Prix,Valtteri Bottas,Kick Sauber,16,false,
+10,2024-06-23,Spanish Grand Prix,Kevin Magnussen,Haas,17,false,
+10,2024-06-23,Spanish Grand Prix,Alexander Albon,Williams,18,false,
+10,2024-06-23,Spanish Grand Prix,Yuki Tsunoda,RB,19,false,
+10,2024-06-23,Spanish Grand Prix,Logan Sargeant,Williams,20,false,
+11,2024-06-30,Austrian Grand Prix,George Russell,Mercedes,1,false,4
+11,2024-06-30,Austrian Grand Prix,Oscar Piastri,McLaren,2,false,2
+11,2024-06-30,Austrian Grand Prix,Carlos Sainz,Ferrari,3,false,5
+11,2024-06-30,Austrian Grand Prix,Lewis Hamilton,Mercedes,4,false,6
+11,2024-06-30,Austrian Grand Prix,Max Verstappen,Red Bull Racing,5,false,1
+11,2024-06-30,Austrian Grand Prix,Nico Hülkenberg,Haas,6,false,19
+11,2024-06-30,Austrian Grand Prix,Sergio Pérez,Red Bull Racing,7,false,8
+11,2024-06-30,Austrian Grand Prix,Kevin Magnussen,Haas,8,false,9
+11,2024-06-30,Austrian Grand Prix,Daniel Ricciardo,RB,9,false,14
+11,2024-06-30,Austrian Grand Prix,Pierre Gasly,Alpine,10,false,12
+11,2024-06-30,Austrian Grand Prix,Charles Leclerc,Ferrari,11,false,7
+11,2024-06-30,Austrian Grand Prix,Esteban Ocon,Alpine,12,false,11
+11,2024-06-30,Austrian Grand Prix,Lance Stroll,Aston Martin,13,false,10
+11,2024-06-30,Austrian Grand Prix,Yuki Tsunoda,RB,14,false,13
+11,2024-06-30,Austrian Grand Prix,Alexander Albon,Williams,15,false,17
+11,2024-06-30,Austrian Grand Prix,Valtteri Bottas,Kick Sauber,16,false,18
+11,2024-06-30,Austrian Grand Prix,Guanyu Zhou,Kick Sauber,17,false,20
+11,2024-06-30,Austrian Grand Prix,Fernando Alonso,Aston Martin,18,true,15
+11,2024-06-30,Austrian Grand Prix,Logan Sargeant,Williams,19,false,16
+11,2024-06-30,Austrian Grand Prix,Lando Norris,McLaren,20,false,3
+12,2024-07-07,British Grand Prix,Lewis Hamilton,Mercedes,1,false,
+12,2024-07-07,British Grand Prix,Max Verstappen,Red Bull Racing,2,false,
+12,2024-07-07,British Grand Prix,Lando Norris,McLaren,3,false,
+12,2024-07-07,British Grand Prix,Oscar Piastri,McLaren,4,false,
+12,2024-07-07,British Grand Prix,Carlos Sainz,Ferrari,5,true,
+12,2024-07-07,British Grand Prix,Nico Hülkenberg,Haas,6,false,
+12,2024-07-07,British Grand Prix,Lance Stroll,Aston Martin,7,false,
+12,2024-07-07,British Grand Prix,Fernando Alonso,Aston Martin,8,false,
+12,2024-07-07,British Grand Prix,Alexander Albon,Williams,9,false,
+12,2024-07-07,British Grand Prix,Yuki Tsunoda,RB,10,false,
+12,2024-07-07,British Grand Prix,Logan Sargeant,Williams,11,false,
+12,2024-07-07,British Grand Prix,Kevin Magnussen,Haas,12,false,
+12,2024-07-07,British Grand Prix,Daniel Ricciardo,RB,13,false,
+12,2024-07-07,British Grand Prix,Charles Leclerc,Ferrari,14,false,
+12,2024-07-07,British Grand Prix,Valtteri Bottas,Kick Sauber,15,false,
+12,2024-07-07,British Grand Prix,Esteban Ocon,Alpine,16,false,
+12,2024-07-07,British Grand Prix,Sergio Pérez,Red Bull Racing,17,false,
+12,2024-07-07,British Grand Prix,Guanyu Zhou,Kick Sauber,18,false,
+12,2024-07-07,British Grand Prix,George Russell,Mercedes,DNF,false,
+12,2024-07-07,British Grand Prix,Pierre Gasly,Alpine,DNF,false,
+13,2024-07-21,Hungarian Grand Prix,Oscar Piastri,McLaren,1,false,
+13,2024-07-21,Hungarian Grand Prix,Lando Norris,McLaren,2,false,
+13,2024-07-21,Hungarian Grand Prix,Lewis Hamilton,Mercedes,3,false,
+13,2024-07-21,Hungarian Grand Prix,Charles Leclerc,Ferrari,4,false,
+13,2024-07-21,Hungarian Grand Prix,Max Verstappen,Red Bull Racing,5,false,
+13,2024-07-21,Hungarian Grand Prix,Carlos Sainz,Ferrari,6,false,
+13,2024-07-21,Hungarian Grand Prix,Sergio Pérez,Red Bull Racing,7,false,
+13,2024-07-21,Hungarian Grand Prix,George Russell,Mercedes,8,true,
+13,2024-07-21,Hungarian Grand Prix,Yuki Tsunoda,RB,9,false,
+13,2024-07-21,Hungarian Grand Prix,Lance Stroll,Aston Martin,10,false,
+13,2024-07-21,Hungarian Grand Prix,Fernando Alonso,Aston Martin,11,false,
+13,2024-07-21,Hungarian Grand Prix,Daniel Ricciardo,RB,12,false,
+13,2024-07-21,Hungarian Grand Prix,Nico Hülkenberg,Haas,13,false,
+13,2024-07-21,Hungarian Grand Prix,Alexander Albon,Williams,14,false,
+13,2024-07-21,Hungarian Grand Prix,Kevin Magnussen,Haas,15,false,
+13,2024-07-21,Hungarian Grand Prix,Valtteri Bottas,Kick Sauber,16,false,
+13,2024-07-21,Hungarian Grand Prix,Logan Sargeant,Williams,17,false,
+13,2024-07-21,Hungarian Grand Prix,Esteban Ocon,Alpine,18,false,
+13,2024-07-21,Hungarian Grand Prix,Guanyu Zhou,Kick Sauber,19,false,
+13,2024-07-21,Hungarian Grand Prix,Pierre Gasly,Alpine,DNF,false,
+14,2024-07-28,Belgian Grand Prix,Lewis Hamilton,Mercedes,1,false,
+14,2024-07-28,Belgian Grand Prix,Oscar Piastri,McLaren,2,false,
+14,2024-07-28,Belgian Grand Prix,Charles Leclerc,Ferrari,3,false,
+14,2024-07-28,Belgian Grand Prix,Max Verstappen,Red Bull Racing,4,false,
+14,2024-07-28,Belgian Grand Prix,Lando Norris,McLaren,5,false,
+14,2024-07-28,Belgian Grand Prix,Carlos Sainz,Ferrari,6,false,
+14,2024-07-28,Belgian Grand Prix,Sergio Pérez,Red Bull Racing,7,true,
+14,2024-07-28,Belgian Grand Prix,Fernando Alonso,Aston Martin,8,false,
+14,2024-07-28,Belgian Grand Prix,Esteban Ocon,Alpine,9,false,
+14,2024-07-28,Belgian Grand Prix,Daniel Ricciardo,RB,10,false,
+14,2024-07-28,Belgian Grand Prix,Lance Stroll,Aston Martin,11,false,
+14,2024-07-28,Belgian Grand Prix,Alexander Albon,Williams,12,false,
+14,2024-07-28,Belgian Grand Prix,Pierre Gasly,Alpine,13,false,
+14,2024-07-28,Belgian Grand Prix,Kevin Magnussen,Haas,14,false,
+14,2024-07-28,Belgian Grand Prix,Valtteri Bottas,Kick Sauber,15,false,
+14,2024-07-28,Belgian Grand Prix,Yuki Tsunoda,RB,16,false,
+14,2024-07-28,Belgian Grand Prix,Logan Sargeant,Williams,17,false,
+14,2024-07-28,Belgian Grand Prix,Nico Hülkenberg,Haas,18,false,
+14,2024-07-28,Belgian Grand Prix,Guanyu Zhou,Kick Sauber,DNF,false,
+14,2024-07-28,Belgian Grand Prix,George Russell,Mercedes,20,false,
+15,2024-08-25,Dutch Grand Prix,Lando Norris,McLaren,1,true,
+15,2024-08-25,Dutch Grand Prix,Max Verstappen,Red Bull Racing,2,false,
+15,2024-08-25,Dutch Grand Prix,Charles Leclerc,Ferrari,3,false,
+15,2024-08-25,Dutch Grand Prix,Oscar Piastri,McLaren,4,false,
+15,2024-08-25,Dutch Grand Prix,Carlos Sainz,Ferrari,5,false,
+15,2024-08-25,Dutch Grand Prix,Sergio Pérez,Red Bull Racing,6,false,
+15,2024-08-25,Dutch Grand Prix,George Russell,Mercedes,7,false,
+15,2024-08-25,Dutch Grand Prix,Lewis Hamilton,Mercedes,8,false,
+15,2024-08-25,Dutch Grand Prix,Pierre Gasly,Alpine,9,false,
+15,2024-08-25,Dutch Grand Prix,Fernando Alonso,Aston Martin,10,false,
+15,2024-08-25,Dutch Grand Prix,Nico Hülkenberg,Haas,11,false,
+15,2024-08-25,Dutch Grand Prix,Daniel Ricciardo,RB,12,false,
+15,2024-08-25,Dutch Grand Prix,Lance Stroll,Aston Martin,13,false,
+15,2024-08-25,Dutch Grand Prix,Alexander Albon,Williams,14,false,
+15,2024-08-25,Dutch Grand Prix,Esteban Ocon,Alpine,15,false,
+15,2024-08-25,Dutch Grand Prix,Logan Sargeant,Williams,16,false,
+15,2024-08-25,Dutch Grand Prix,Yuki Tsunoda,RB,17,false,
+15,2024-08-25,Dutch Grand Prix,Kevin Magnussen,Haas,18,false,
+15,2024-08-25,Dutch Grand Prix,Valtteri Bottas,Kick Sauber,19,false,
+15,2024-08-25,Dutch Grand Prix,Guanyu Zhou,Kick Sauber,20,false,
+16,2024-09-01,Italian Grand Prix,Charles Leclerc,Ferrari,1,false,
+16,2024-09-01,Italian Grand Prix,Oscar Piastri,McLaren,2,false,
+16,2024-09-01,Italian Grand Prix,Lando Norris,McLaren,3,true,
+16,2024-09-01,Italian Grand Prix,Carlos Sainz,Ferrari,4,false,
+16,2024-09-01,Italian Grand Prix,Lewis Hamilton,Mercedes,5,false,
+16,2024-09-01,Italian Grand Prix,Max Verstappen,Red Bull Racing,6,false,
+16,2024-09-01,Italian Grand Prix,George Russell,Mercedes,7,false,
+16,2024-09-01,Italian Grand Prix,Sergio Pérez,Red Bull Racing,8,false,
+16,2024-09-01,Italian Grand Prix,Alexander Albon,Williams,9,false,
+16,2024-09-01,Italian Grand Prix,Kevin Magnussen,Haas,10,false,
+16,2024-09-01,Italian Grand Prix,Fernando Alonso,Aston Martin,11,false,
+16,2024-09-01,Italian Grand Prix,Franco Colapinto,Williams,12,false,
+16,2024-09-01,Italian Grand Prix,Daniel Ricciardo,RB,13,false,
+16,2024-09-01,Italian Grand Prix,Esteban Ocon,Alpine,14,false,
+16,2024-09-01,Italian Grand Prix,Pierre Gasly,Alpine,15,false,
+16,2024-09-01,Italian Grand Prix,Valtteri Bottas,Kick Sauber,16,false,
+16,2024-09-01,Italian Grand Prix,Nico Hülkenberg,Haas,17,false,
+16,2024-09-01,Italian Grand Prix,Guanyu Zhou,Kick Sauber,18,false,
+16,2024-09-01,Italian Grand Prix,Lance Stroll,Aston Martin,19,false,
+16,2024-09-01,Italian Grand Prix,Yuki Tsunoda,RB,DNF,false,
+17,2024-09-15,Azerbaijan Grand Prix,Oscar Piastri,McLaren,1,false,
+17,2024-09-15,Azerbaijan Grand Prix,Charles Leclerc,Ferrari,2,false,
+17,2024-09-15,Azerbaijan Grand Prix,George Russell,Mercedes,3,false,
+17,2024-09-15,Azerbaijan Grand Prix,Lando Norris,McLaren,4,true,
+17,2024-09-15,Azerbaijan Grand Prix,Max Verstappen,Red Bull Racing,5,false,
+17,2024-09-15,Azerbaijan Grand Prix,Fernando Alonso,Aston Martin,6,false,
+17,2024-09-15,Azerbaijan Grand Prix,Alexander Albon,Williams,7,false,
+17,2024-09-15,Azerbaijan Grand Prix,Franco Colapinto,Williams,8,false,
+17,2024-09-15,Azerbaijan Grand Prix,Lewis Hamilton,Mercedes,9,false,
+17,2024-09-15,Azerbaijan Grand Prix,Oliver Bearman,Haas,10,false,
+17,2024-09-15,Azerbaijan Grand Prix,Nico Hülkenberg,Haas,11,false,
+17,2024-09-15,Azerbaijan Grand Prix,Pierre Gasly,Alpine,12,false,
+17,2024-09-15,Azerbaijan Grand Prix,Daniel Ricciardo,RB,13,false,
+17,2024-09-15,Azerbaijan Grand Prix,Guanyu Zhou,Kick Sauber,14,false,
+17,2024-09-15,Azerbaijan Grand Prix,Esteban Ocon,Alpine,15,false,
+17,2024-09-15,Azerbaijan Grand Prix,Valtteri Bottas,Kick Sauber,16,false,
+17,2024-09-15,Azerbaijan Grand Prix,Sergio Pérez,Red Bull Racing,17,false,
+17,2024-09-15,Azerbaijan Grand Prix,Carlos Sainz,Ferrari,18,false,
+17,2024-09-15,Azerbaijan Grand Prix,Lance Stroll,Aston Martin,19,false,
+17,2024-09-15,Azerbaijan Grand Prix,Yuki Tsunoda,RB,DNF,false,
+18,2024-09-22,Singapore Grand Prix,Lando Norris,McLaren,1,false,
+18,2024-09-22,Singapore Grand Prix,Max Verstappen,Red Bull Racing,2,false,
+18,2024-09-22,Singapore Grand Prix,Oscar Piastri,McLaren,3,false,
+18,2024-09-22,Singapore Grand Prix,George Russell,Mercedes,4,false,
+18,2024-09-22,Singapore Grand Prix,Charles Leclerc,Ferrari,5,false,
+18,2024-09-22,Singapore Grand Prix,Lewis Hamilton,Mercedes,6,false,
+18,2024-09-22,Singapore Grand Prix,Carlos Sainz,Ferrari,7,false,
+18,2024-09-22,Singapore Grand Prix,Fernando Alonso,Aston Martin,8,false,
+18,2024-09-22,Singapore Grand Prix,Nico Hülkenberg,Haas,9,false,
+18,2024-09-22,Singapore Grand Prix,Sergio Pérez,Red Bull Racing,10,false,
+18,2024-09-22,Singapore Grand Prix,Franco Colapinto,Williams,11,false,
+18,2024-09-22,Singapore Grand Prix,Yuki Tsunoda,RB,12,false,
+18,2024-09-22,Singapore Grand Prix,Esteban Ocon,Alpine,13,false,
+18,2024-09-22,Singapore Grand Prix,Lance Stroll,Aston Martin,14,false,
+18,2024-09-22,Singapore Grand Prix,Guanyu Zhou,Kick Sauber,15,false,
+18,2024-09-22,Singapore Grand Prix,Valtteri Bottas,Kick Sauber,16,false,
+18,2024-09-22,Singapore Grand Prix,Pierre Gasly,Alpine,17,false,
+18,2024-09-22,Singapore Grand Prix,Daniel Ricciardo,RB,18,true,
+18,2024-09-22,Singapore Grand Prix,Kevin Magnussen,Haas,19,false,
+18,2024-09-22,Singapore Grand Prix,Alexander Albon,Williams,DNF,false,
+19,2024-10-20,United States Grand Prix,Charles Leclerc,Ferrari,1,false,4
+19,2024-10-20,United States Grand Prix,Carlos Sainz,Ferrari,2,false,2
+19,2024-10-20,United States Grand Prix,Max Verstappen,Red Bull Racing,3,false,1
+19,2024-10-20,United States Grand Prix,Lando Norris,McLaren,4,false,3
+19,2024-10-20,United States Grand Prix,Oscar Piastri,McLaren,5,false,10
+19,2024-10-20,United States Grand Prix,George Russell,Mercedes,6,false,5
+19,2024-10-20,United States Grand Prix,Sergio Pérez,Red Bull Racing,7,false,9
+19,2024-10-20,United States Grand Prix,Nico Hülkenberg,Haas,8,false,8
+19,2024-10-20,United States Grand Prix,Liam Lawson,RB,9,false,16
+19,2024-10-20,United States Grand Prix,Franco Colapinto,Williams,10,false,12
+19,2024-10-20,United States Grand Prix,Kevin Magnussen,Haas,11,false,7
+19,2024-10-20,United States Grand Prix,Pierre Gasly,Alpine,12,false,14
+19,2024-10-20,United States Grand Prix,Fernando Alonso,Aston Martin,13,false,18
+19,2024-10-20,United States Grand Prix,Yuki Tsunoda,RB,14,false,11
+19,2024-10-20,United States Grand Prix,Lance Stroll,Aston Martin,15,false,13
+19,2024-10-20,United States Grand Prix,Alexander Albon,Williams,16,false,17
+19,2024-10-20,United States Grand Prix,Valtteri Bottas,Kick Sauber,17,false,20
+19,2024-10-20,United States Grand Prix,Esteban Ocon,Alpine,18,true,15
+19,2024-10-20,United States Grand Prix,Guanyu Zhou,Kick Sauber,19,false,19
+19,2024-10-20,United States Grand Prix,Lewis Hamilton,Mercedes,DNF,false,6
+20,2024-10-27,Mexico City Grand Prix,Carlos Sainz,Ferrari,1,false,
+20,2024-10-27,Mexico City Grand Prix,Lando Norris,McLaren,2,false,
+20,2024-10-27,Mexico City Grand Prix,Charles Leclerc,Ferrari,3,true,
+20,2024-10-27,Mexico City Grand Prix,Lewis Hamilton,Mercedes,4,false,
+20,2024-10-27,Mexico City Grand Prix,George Russell,Mercedes,5,false,
+20,2024-10-27,Mexico City Grand Prix,Max Verstappen,Red Bull Racing,6,false,
+20,2024-10-27,Mexico City Grand Prix,Kevin Magnussen,Haas,7,false,
+20,2024-10-27,Mexico City Grand Prix,Oscar Piastri,McLaren,8,false,
+20,2024-10-27,Mexico City Grand Prix,Nico Hülkenberg,Haas,9,false,
+20,2024-10-27,Mexico City Grand Prix,Pierre Gasly,Alpine,10,false,
+20,2024-10-27,Mexico City Grand Prix,Lance Stroll,Aston Martin,11,false,
+20,2024-10-27,Mexico City Grand Prix,Franco Colapinto,Williams,12,false,
+20,2024-10-27,Mexico City Grand Prix,Esteban Ocon,Alpine,13,false,
+20,2024-10-27,Mexico City Grand Prix,Valtteri Bottas,Kick Sauber,14,false,
+20,2024-10-27,Mexico City Grand Prix,Guanyu Zhou,Kick Sauber,15,false,
+20,2024-10-27,Mexico City Grand Prix,Liam Lawson,RB,16,false,
+20,2024-10-27,Mexico City Grand Prix,Sergio Pérez,Red Bull Racing,17,false,
+20,2024-10-27,Mexico City Grand Prix,Fernando Alonso,Aston Martin,DNF,false,
+20,2024-10-27,Mexico City Grand Prix,Alexander Albon,Williams,DNF,false,
+20,2024-10-27,Mexico City Grand Prix,Yuki Tsunoda,RB,DNF,false,
+21,2024-11-03,São Paulo Grand Prix,Max Verstappen,Red Bull Racing,1,true,4
+21,2024-11-03,São Paulo Grand Prix,Esteban Ocon,Alpine,2,false,13
+21,2024-11-03,São Paulo Grand Prix,Pierre Gasly,Alpine,3,false,7
+21,2024-11-03,São Paulo Grand Prix,George Russell,Mercedes,4,false,6
+21,2024-11-03,São Paulo Grand Prix,Charles Leclerc,Ferrari,5,false,3
+21,2024-11-03,São Paulo Grand Prix,Lando Norris,McLaren,6,false,1
+21,2024-11-03,São Paulo Grand Prix,Yuki Tsunoda,RB,7,false,15
+21,2024-11-03,São Paulo Grand Prix,Oscar Piastri,McLaren,8,false,2
+21,2024-11-03,São Paulo Grand Prix,Liam Lawson,RB,9,false,9
+21,2024-11-03,São Paulo Grand Prix,Lewis Hamilton,Mercedes,10,false,11
+21,2024-11-03,São Paulo Grand Prix,Sergio Pérez,Red Bull Racing,11,false,8
+21,2024-11-03,São Paulo Grand Prix,Oliver Bearman,Haas,12,false,14
+21,2024-11-03,São Paulo Grand Prix,Valtteri Bottas,Kick Sauber,13,false,16
+21,2024-11-03,São Paulo Grand Prix,Fernando Alonso,Aston Martin,14,false,18
+21,2024-11-03,São Paulo Grand Prix,Guanyu Zhou,Kick Sauber,15,false,17
+21,2024-11-03,São Paulo Grand Prix,Carlos Sainz,Ferrari,DNF,false,5
+21,2024-11-03,São Paulo Grand Prix,Franco Colapinto,Williams,DNF,false,12
+21,2024-11-03,São Paulo Grand Prix,Alexander Albon,Williams,DNF,false,10
+21,2024-11-03,São Paulo Grand Prix,Lance Stroll,Aston Martin,DNF,false,19
+21,2024-11-03,São Paulo Grand Prix,Nico Hülkenberg,Haas,DNF,false,
+22,2024-11-23,Las Vegas Grand Prix,George Russell,Mercedes,1,false,
+22,2024-11-23,Las Vegas Grand Prix,Lewis Hamilton,Mercedes,2,false,
+22,2024-11-23,Las Vegas Grand Prix,Carlos Sainz,Ferrari,3,false,
+22,2024-11-23,Las Vegas Grand Prix,Charles Leclerc,Ferrari,4,false,
+22,2024-11-23,Las Vegas Grand Prix,Max Verstappen,Red Bull Racing,5,false,
+22,2024-11-23,Las Vegas Grand Prix,Lando Norris,McLaren,6,true,
+22,2024-11-23,Las Vegas Grand Prix,Oscar Piastri,McLaren,7,false,
+22,2024-11-23,Las Vegas Grand Prix,Nico Hülkenberg,Haas,8,false,
+22,2024-11-23,Las Vegas Grand Prix,Yuki Tsunoda,RB,9,false,
+22,2024-11-23,Las Vegas Grand Prix,Sergio Pérez,Red Bull Racing,10,false,
+22,2024-11-23,Las Vegas Grand Prix,Fernando Alonso,Aston Martin,11,false,
+22,2024-11-23,Las Vegas Grand Prix,Kevin Magnussen,Haas,12,false,
+22,2024-11-23,Las Vegas Grand Prix,Guanyu Zhou,Kick Sauber,13,false,
+22,2024-11-23,Las Vegas Grand Prix,Franco Colapinto,Williams,14,false,
+22,2024-11-23,Las Vegas Grand Prix,Lance Stroll,Aston Martin,15,false,
+22,2024-11-23,Las Vegas Grand Prix,Liam Lawson,RB,16,false,
+22,2024-11-23,Las Vegas Grand Prix,Esteban Ocon,Alpine,17,false,
+22,2024-11-23,Las Vegas Grand Prix,Valtteri Bottas,Kick Sauber,18,false,
+22,2024-11-23,Las Vegas Grand Prix,Alexander Albon,Williams,DNF,false,
+22,2024-11-23,Las Vegas Grand Prix,Pierre Gasly,Alpine,DNF,false,
+23,2024-12-01,Qatar Grand Prix,Max Verstappen,Red Bull Racing,1,false,8
+23,2024-12-01,Qatar Grand Prix,Charles Leclerc,Ferrari,2,false,5
+23,2024-12-01,Qatar Grand Prix,Oscar Piastri,McLaren,3,false,1
+23,2024-12-01,Qatar Grand Prix,George Russell,Mercedes,4,false,3
+23,2024-12-01,Qatar Grand Prix,Pierre Gasly,Alpine,5,false,9
+23,2024-12-01,Qatar Grand Prix,Carlos Sainz,Ferrari,6,false,4
+23,2024-12-01,Qatar Grand Prix,Fernando Alonso,Aston Martin,7,false,11
+23,2024-12-01,Qatar Grand Prix,Guanyu Zhou,Kick Sauber,8,false,19
+23,2024-12-01,Qatar Grand Prix,Kevin Magnussen,Haas,9,false,10
+23,2024-12-01,Qatar Grand Prix,Lando Norris,McLaren,10,true,2
+23,2024-12-01,Qatar Grand Prix,Valtteri Bottas,Kick Sauber,11,false,12
+23,2024-12-01,Qatar Grand Prix,Lewis Hamilton,Mercedes,12,false,6
+23,2024-12-01,Qatar Grand Prix,Yuki Tsunoda,RB,13,false,17
+23,2024-12-01,Qatar Grand Prix,Liam Lawson,RB,14,false,16
+23,2024-12-01,Qatar Grand Prix,Alexander Albon,Williams,15,false,15
+23,2024-12-01,Qatar Grand Prix,Nico Hülkenberg,Haas,DNF,false,7
+23,2024-12-01,Qatar Grand Prix,Sergio Pérez,Red Bull Racing,DNF,false,20
+23,2024-12-01,Qatar Grand Prix,Lance Stroll,Aston Martin,DNF,false,13
+23,2024-12-01,Qatar Grand Prix,Franco Colapinto,Williams,DNF,false,18
+23,2024-12-01,Qatar Grand Prix,Esteban Ocon,Alpine,DNF,false,14
+24,2024-12-08,Abu Dhabi Grand Prix,Lando Norris,McLaren,1,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Carlos Sainz,Ferrari,2,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Charles Leclerc,Ferrari,3,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Lewis Hamilton,Mercedes,4,false,
+24,2024-12-08,Abu Dhabi Grand Prix,George Russell,Mercedes,5,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Max Verstappen,Red Bull Racing,6,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Pierre Gasly,Alpine,7,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Nico Hülkenberg,Haas,8,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Fernando Alonso,Aston Martin,9,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Oscar Piastri,McLaren,10,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Alexander Albon,Williams,11,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Yuki Tsunoda,RB,12,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Guanyu Zhou,Kick Sauber,13,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Lance Stroll,Aston Martin,14,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Jack Doohan,Alpine,15,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Kevin Magnussen,Haas,16,true,
+24,2024-12-08,Abu Dhabi Grand Prix,Liam Lawson,RB,17,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Valtteri Bottas,Kick Sauber,DNF,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Franco Colapinto,Williams,DNF,false,
+24,2024-12-08,Abu Dhabi Grand Prix,Sergio Pérez,Red Bull Racing,DNF,false,
