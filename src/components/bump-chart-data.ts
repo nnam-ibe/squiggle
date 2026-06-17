@@ -3,6 +3,13 @@ import type { Standings } from "@/domain/types";
 export interface ChartPoint {
   round: number;
   pos: number;
+  /** Cumulative points at this round (drives the StatCard / tooltip). */
+  pts: number;
+  /** Soccer per-round record + goal difference (0 when the sport doesn't track them). */
+  w: number;
+  d: number;
+  l: number;
+  gd: number;
 }
 
 export interface ChartSeries {
@@ -40,7 +47,15 @@ export function buildChartSeries(
   for (const snap of standings.rounds) {
     for (const s of snap.standings) {
       const list = byEntity.get(s.entity) ?? [];
-      list.push({ round: snap.round, pos: s.position });
+      list.push({
+        round: snap.round,
+        pos: s.position,
+        pts: s.points,
+        w: s.stats.won ?? 0,
+        d: s.stats.drawn ?? 0,
+        l: s.stats.lost ?? 0,
+        gd: s.stats.gd ?? 0,
+      });
       byEntity.set(s.entity, list);
     }
   }

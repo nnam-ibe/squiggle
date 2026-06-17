@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import type { ChartSeries } from "./bump-chart-data";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { ChartPoint, ChartSeries } from "./bump-chart-data";
 
 /** Catmull-Rom smoothed path through the points (design default line shape). */
 function smoothPath(pts: { x: number; y: number }[]): string {
@@ -28,10 +28,25 @@ const PAD_L = 18;
 const PILL_W = 118;
 const PILL_H = 22;
 const LINE_W = 2.6;
+const DIM = "var(--bump-dim)";
 
-export function BumpChart({ series, rounds }: { series: ChartSeries[]; rounds: number }) {
+const GOOD = "#3ee07f";
+const BAD = "#ff6b6b";
+
+export function BumpChart({
+  series,
+  rounds,
+  roundLabel = "Matchweek",
+}: {
+  series: ChartSeries[];
+  rounds: number;
+  /** Singular x-axis unit shown in the stat card, e.g. "Matchweek" or "Round". */
+  roundLabel?: string;
+}) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [wrapW, setWrapW] = useState(360);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [focusRound, setFocusRound] = useState(rounds);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -57,126 +72,389 @@ export function BumpChart({ series, rounds }: { series: ChartSeries[]; rounds: n
   const roundTicks = Array.from({ length: rounds }, (_, i) => i + 1);
   const isMajorRound = (r: number) => r === 1 || r === rounds || r % 5 === 0;
 
-  return (
-    <div className="relative overflow-hidden rounded-panel border border-line bg-panel">
-      {/* pinned position axis */}
-      <div
-        className="pointer-events-none absolute left-0 top-0 z-10 border-r border-line bg-panel"
-        style={{ width: AXIS_W, height: h }}
-      >
-        <div className="absolute left-0 top-2 w-[34px] text-right font-mono text-[9px] font-bold tracking-[0.1em] text-fg3">
-          POS
-        </div>
-        {positions.map((p) => {
-          const major = p === 1 || p === n || p % 5 === 0;
-          return (
-            <div
-              key={p}
-              className="absolute left-0 text-right font-mono [font-variant-numeric:tabular-nums]"
-              style={{
-                top: yFor(p) - 9,
-                width: AXIS_W - 6,
-                fontSize: 11,
-                lineHeight: "18px",
-                fontWeight: major ? 700 : 500,
-                color: major ? "var(--fg)" : "var(--fg3)",
-              }}
-            >
-              {p}
-            </div>
-          );
-        })}
-      </div>
+  const paths = useMemo(
+    () =>
+      new Map(
+        series.map((row) => [
+          row.id,
+          smoothPath(row.points.map((pt) => ({ x: xFor(pt.round), y: yFor(pt.pos) }))),
+        ]),
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [series, colW, rowH, n],
+  );
 
-      <div ref={scrollRef} className="overflow-x-auto overflow-y-hidden" style={{ marginLeft: AXIS_W }}>
-        <svg width={plotW} height={h} className="block">
-          {/* horizontal gridlines */}
-          {positions.map((p) => (
-            <line
-              key={`g${p}`}
-              x1={0}
-              x2={plotW - PILL_W + 10}
-              y1={yFor(p)}
-              y2={yFor(p)}
-              stroke="var(--line)"
-              strokeWidth={1}
-            />
-          ))}
-          {/* vertical round ticks (major, or all when columns are wide enough) */}
-          {roundTicks.map((r) => {
-            const major = isMajorRound(r);
-            if (!major && colW < 34) return null;
+  const someSel = selectedId != null;
+  const selRow = series.find((r) => r.id === selectedId) ?? null;
+  // Toggling a line on starts its scrub at the final round.
+  const select = (id: string | null) => {
+    const next = selectedId === id ? null : id;
+    setSelectedId(next);
+    if (next != null) setFocusRound(rounds);
+  };
+
+  const clampedFocus = selRow ? Math.min(focusRound, selRow.points.length) : focusRound;
+  const focusH = selRow ? selRow.points[clampedFocus - 1] : null;
+  const focusPt = focusH ? { x: xFor(focusH.round), y: yFor(focusH.pos) } : null;
+
+  // Scrub the focused round from a click/tap anywhere in the plot (when a line is selected).
+  function handleScrub(e: React.MouseEvent<SVGRectElement>) {
+    if (!selRow) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const r = Math.max(1, Math.min(rounds, Math.round((px - PAD_L) / colW) + 1));
+    setFocusRound(r);
+  }
+
+  return (
+    <div>
+      <div className="relative overflow-hidden rounded-panel border border-line bg-panel">
+        {/* pinned position axis */}
+        <div
+          className="pointer-events-none absolute left-0 top-0 z-10 border-r border-line bg-panel"
+          style={{ width: AXIS_W, height: h }}
+        >
+          <div className="absolute left-0 top-2 w-[34px] text-right font-mono text-[9px] font-bold tracking-[0.1em] text-fg3">
+            POS
+          </div>
+          {positions.map((p) => {
+            const major = p === 1 || p === n || p % 5 === 0;
             return (
+              <div
+                key={p}
+                className="absolute left-0 text-right font-mono [font-variant-numeric:tabular-nums]"
+                style={{
+                  top: yFor(p) - 9,
+                  width: AXIS_W - 6,
+                  fontSize: 11,
+                  lineHeight: "18px",
+                  fontWeight: major ? 700 : 500,
+                  color: major ? "var(--fg)" : "var(--fg3)",
+                }}
+              >
+                {p}
+              </div>
+            );
+          })}
+        </div>
+
+        <div ref={scrollRef} className="overflow-x-auto overflow-y-hidden" style={{ marginLeft: AXIS_W }}>
+          <svg width={plotW} height={h} className="block">
+            <defs>
+              <filter id="sqglow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation={3.2} result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* horizontal gridlines */}
+            {positions.map((p) => (
               <line
-                key={`v${r}`}
-                x1={xFor(r)}
-                x2={xFor(r)}
-                y1={PAD_T - 6}
-                y2={h - PAD_B + 6}
+                key={`g${p}`}
+                x1={0}
+                x2={plotW - PILL_W + 10}
+                y1={yFor(p)}
+                y2={yFor(p)}
                 stroke="var(--line)"
                 strokeWidth={1}
-                opacity={major ? 1 : 0.5}
               />
-            );
-          })}
-          {/* lines */}
-          {series.map((row) => (
-            <path
-              key={row.id}
-              d={smoothPath(row.points.map((pt) => ({ x: xFor(pt.round), y: yFor(pt.pos) })))}
-              fill="none"
-              stroke={row.color}
-              strokeWidth={LINE_W}
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            ))}
+            {/* vertical round ticks (major, or all when columns are wide enough) */}
+            {roundTicks.map((r) => {
+              const major = isMajorRound(r);
+              if (!major && colW < 34) return null;
+              return (
+                <line
+                  key={`v${r}`}
+                  x1={xFor(r)}
+                  x2={xFor(r)}
+                  y1={PAD_T - 6}
+                  y2={h - PAD_B + 6}
+                  stroke="var(--line)"
+                  strokeWidth={1}
+                  opacity={major ? 1 : 0.5}
+                />
+              );
+            })}
+
+            {/* scrub capture: tap anywhere to move the focus round (only while a line is selected) */}
+            <rect
+              x={0}
+              y={0}
+              width={plotW}
+              height={h}
+              fill="transparent"
+              onClick={handleScrub}
+              style={{ cursor: selRow ? "crosshair" : "default" }}
             />
-          ))}
-          {/* x-axis round labels */}
-          {roundTicks.map((r) => {
-            const major = isMajorRound(r);
-            if (!major && colW < 30) return null;
-            if (!major && colW < 46 && r % 2 === 0) return null;
-            return (
-              <text
-                key={`x${r}`}
-                x={xFor(r)}
-                y={h - 12}
-                textAnchor="middle"
-                fontSize={10.5}
-                fontWeight={major ? 700 : 500}
-                fill={major ? "var(--fg2)" : "var(--fg3)"}
-                fontFamily="var(--mono)"
-              >
-                {r}
-              </text>
-            );
-          })}
-          {/* end pills: short code + final position */}
-          {series.map((row) => {
-            const last = row.points[row.points.length - 1];
-            const x = xFor(last.round) + 10;
-            const y = yFor(last.pos);
-            return (
-              <g key={`p${row.id}`} transform={`translate(${x},${y - PILL_H / 2})`}>
-                <rect x={0} y={0} width={92} height={PILL_H} rx={6} fill={row.color} />
-                <text x={9} y={PILL_H / 2 + 4} fontSize={11.5} fontWeight={800} fill="#0b0e14" fontFamily="var(--mono)" letterSpacing="0.3">
-                  {row.short}
-                </text>
-                <text
-                  x={92 - 8}
-                  y={PILL_H / 2 + 4}
-                  textAnchor="end"
-                  fontSize={11.5}
-                  fontWeight={800}
-                  fill="rgba(11,14,20,0.62)"
-                  fontFamily="var(--mono)"
-                >
-                  {row.finalPos}
-                </text>
+
+            {/* focus guide for the selected line */}
+            {selRow && focusPt && (
+              <line
+                x1={focusPt.x}
+                x2={focusPt.x}
+                y1={PAD_T - 6}
+                y2={h - PAD_B + 6}
+                stroke={selRow.color}
+                strokeWidth={1.5}
+                strokeDasharray="2 4"
+                opacity={0.7}
+                pointerEvents="none"
+              />
+            )}
+
+            {/* unselected lines (dimmed when something is selected) + generous touch hit-areas */}
+            {series
+              .filter((row) => row.id !== selectedId)
+              .map((row) => (
+                <g key={row.id}>
+                  <path
+                    d={paths.get(row.id)}
+                    fill="none"
+                    stroke={someSel ? DIM : row.color}
+                    strokeWidth={someSel ? 1.6 : LINE_W}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ transition: "stroke .25s, stroke-width .2s, opacity .25s" }}
+                  />
+                  <path
+                    d={paths.get(row.id)}
+                    fill="none"
+                    stroke="transparent"
+                    strokeWidth={16}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => select(row.id)}
+                  />
+                </g>
+              ))}
+
+            {/* selected line on top, with glow + scrub dots */}
+            {selRow && (
+              <g>
+                <path
+                  d={paths.get(selRow.id)}
+                  fill="none"
+                  stroke={selRow.color}
+                  strokeWidth={LINE_W + 1.6}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#sqglow)"
+                  pointerEvents="none"
+                />
+                {selRow.points.map((pt, i) => {
+                  const isFocus = i + 1 === clampedFocus;
+                  return (
+                    <circle
+                      key={i}
+                      cx={xFor(pt.round)}
+                      cy={yFor(pt.pos)}
+                      r={isFocus ? 5 : 2.6}
+                      fill={isFocus ? "#fff" : selRow.color}
+                      stroke={selRow.color}
+                      strokeWidth={isFocus ? 3 : 0}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setFocusRound(i + 1)}
+                    />
+                  );
+                })}
               </g>
-            );
-          })}
-        </svg>
+            )}
+
+            {/* x-axis round labels */}
+            {roundTicks.map((r) => {
+              const major = isMajorRound(r);
+              if (!major && colW < 30) return null;
+              if (!major && colW < 46 && r % 2 === 0) return null;
+              return (
+                <text
+                  key={`x${r}`}
+                  x={xFor(r)}
+                  y={h - 12}
+                  textAnchor="middle"
+                  fontSize={10.5}
+                  fontWeight={major ? 700 : 500}
+                  fill={major ? "var(--fg2)" : "var(--fg3)"}
+                  fontFamily="var(--mono)"
+                  pointerEvents="none"
+                >
+                  {r}
+                </text>
+              );
+            })}
+
+            {/* end pills: short code + final position (tap to toggle selection) */}
+            {series.map((row) => {
+              const last = row.points[row.points.length - 1];
+              const x = xFor(last.round) + 10;
+              const y = yFor(last.pos);
+              const isSel = row.id === selectedId;
+              const dimmed = someSel && !isSel;
+              return (
+                <g
+                  key={`p${row.id}`}
+                  transform={`translate(${x},${y - PILL_H / 2})`}
+                  opacity={dimmed ? 0.22 : 1}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => select(row.id)}
+                >
+                  <rect x={0} y={0} width={92} height={PILL_H} rx={6} fill={dimmed ? DIM : row.color} />
+                  <text x={9} y={PILL_H / 2 + 4} fontSize={11.5} fontWeight={800} fill="#0b0e14" fontFamily="var(--mono)" letterSpacing="0.3">
+                    {row.short}
+                  </text>
+                  <text
+                    x={92 - 8}
+                    y={PILL_H / 2 + 4}
+                    textAnchor="end"
+                    fontSize={11.5}
+                    fontWeight={800}
+                    fill="rgba(11,14,20,0.62)"
+                    fontFamily="var(--mono)"
+                  >
+                    {row.finalPos}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+        {selRow && focusH && (
+          <StatCard
+            row={selRow}
+            h={focusH}
+            round={clampedFocus}
+            roundLabel={roundLabel}
+            onClose={() => setSelectedId(null)}
+          />
+        )}
+      </div>
+
+      <Legend series={series} selectedId={selectedId} onSelect={select} />
+    </div>
+  );
+}
+
+function StatCard({
+  row,
+  h,
+  round,
+  roundLabel,
+  onClose,
+}: {
+  row: ChartSeries;
+  h: ChartPoint;
+  round: number;
+  roundLabel: string;
+  onClose: () => void;
+}) {
+  const played = h.w + h.d + h.l;
+  return (
+    <div className="absolute right-[10px] top-[10px] z-20 w-[214px] max-w-[calc(100%-56px)] rounded-card border-[1.5px] border-line2 bg-[color-mix(in_oklab,var(--panel)_92%,transparent)] px-[14px] py-[13px] shadow-[var(--shadow)] backdrop-blur-[10px]">
+      <div className="mb-[11px] flex items-center gap-[9px]">
+        <span className="size-4 flex-none rounded-full" style={{ background: row.color }} />
+        <div className="min-w-0 flex-1">
+          <div className="truncate font-head text-[15.5px] font-extrabold leading-[1.1] tracking-[-0.01em]">
+            {row.name}
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="flex size-6 flex-none items-center justify-center rounded-lg text-[20px] leading-none text-fg3 transition-colors hover:bg-panel2 hover:text-fg"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="mb-[10px] flex items-center justify-between rounded-[10px] bg-panel2 px-[11px] py-[9px]">
+        <span className="font-mono text-[11.5px] font-semibold uppercase tracking-[0.04em] text-fg2">
+          {roundLabel} {round}
+        </span>
+        <span className="flex items-baseline gap-[3px] font-head text-[12px] font-bold text-fg3">
+          P<b className="text-[21px] font-extrabold text-fg">{h.pos}</b>
+        </span>
+      </div>
+
+      <div className="mb-[10px] grid grid-cols-3 gap-2">
+        <Stat label="Points" value={h.pts} />
+        <Stat label="Played" value={played} />
+        <Stat label="GD" value={`${h.gd >= 0 ? "+" : ""}${h.gd}`} tone={h.gd >= 0 ? "good" : "bad"} />
+      </div>
+
+      <div className="mb-[9px] flex gap-[7px]">
+        <Wdl label="W" value={h.w} color={GOOD} />
+        <Wdl label="D" value={h.d} color="var(--fg2)" />
+        <Wdl label="L" value={h.l} color={BAD} />
+      </div>
+
+      <div className="text-center font-mono text-[10.5px] tracking-[0.02em] text-fg3">
+        Tap the chart to scrub {roundLabel.toLowerCase()}s
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, value, tone }: { label: string; value: number | string; tone?: "good" | "bad" }) {
+  const color = tone === "good" ? GOOD : tone === "bad" ? BAD : undefined;
+  return (
+    <div className="rounded-[10px] bg-panel2 px-[6px] py-2 text-center">
+      <div className="font-head text-[18px] font-extrabold leading-none tracking-[-0.02em]" style={color ? { color } : undefined}>
+        {value}
+      </div>
+      <div className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.06em] text-fg3">{label}</div>
+    </div>
+  );
+}
+
+function Wdl({ label, value, color }: { label: string; value: number; color: string }) {
+  return (
+    <div className="flex flex-1 items-center justify-center gap-[5px] rounded-[9px] bg-panel2 px-1 py-[6px]">
+      <span className="size-2 flex-none rounded-full" style={{ background: color }} />
+      <span className="font-head text-[14px] font-extrabold">{value}</span>
+      <span className="font-mono text-[10px] text-fg3">{label}</span>
+    </div>
+  );
+}
+
+function Legend({
+  series,
+  selectedId,
+  onSelect,
+}: {
+  series: ChartSeries[];
+  selectedId: string | null;
+  onSelect: (id: string | null) => void;
+}) {
+  return (
+    <div className="sticky bottom-0 z-20 mt-[6px] bg-[linear-gradient(0deg,var(--bg)_70%,transparent)] pb-[14px] pt-[12px]">
+      <div className="px-[18px] pb-[9px] font-mono text-[10.5px] uppercase tracking-[0.08em] text-fg3">
+        {selectedId ? "Tap another to compare · tap chart to scrub" : "Tap a line or chip to highlight"}
+      </div>
+      <div className="flex gap-[7px] overflow-x-auto px-4 pb-[6px] pt-[2px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {series.map((row) => {
+          const on = row.id === selectedId;
+          const off = selectedId != null && !on;
+          return (
+            <button
+              key={row.id}
+              type="button"
+              onClick={() => onSelect(row.id)}
+              aria-pressed={on}
+              className={`flex flex-none items-center gap-[6px] whitespace-nowrap rounded-pill border-[1.5px] bg-chip py-[7px] pl-[9px] pr-[11px] transition-[border-color,opacity,transform] hover:-translate-y-px ${
+                on ? "" : "border-line"
+              } ${off ? "opacity-[0.42]" : ""}`}
+              style={on ? { borderColor: row.color, background: `color-mix(in oklab, ${row.color} 16%, var(--chip))` } : undefined}
+            >
+              <span className="size-[10px] flex-none rounded-full" style={{ background: row.color }} />
+              <span className={`font-mono text-[11px] font-bold ${on ? "text-fg" : "text-fg3"}`}>{row.finalPos}</span>
+              <span className="font-head text-[13px] font-bold tracking-[-0.01em]">{row.short}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

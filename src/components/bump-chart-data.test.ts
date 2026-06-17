@@ -34,8 +34,8 @@ describe("buildChartSeries", () => {
     expect(series.map((s) => s.id)).toEqual(["Chelsea", "Arsenal"]); // final pos 1, 2
     const arsenal = series.find((s) => s.id === "Arsenal")!;
     expect(arsenal.points).toEqual([
-      { round: 1, pos: 1 },
-      { round: 2, pos: 2 },
+      { round: 1, pos: 1, pts: 3, w: 0, d: 0, l: 0, gd: 0 },
+      { round: 2, pos: 2, pts: 3, w: 0, d: 0, l: 0, gd: 0 },
     ]);
     expect(arsenal.finalPos).toBe(2);
     expect(arsenal.short).toBe("ARS");

@@ -16,6 +16,7 @@
   --fg3: #6a7488;
   --chip: #161c28;
   --shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+  --bump-dim: rgba(150, 160, 178, 0.16); /* dimmed bump lines when one is selected */
 }
 
 :root[data-theme="light"] {
@@ -31,6 +32,7 @@
   --fg3: #8a93a4;
   --chip: #ffffff;
   --shadow: 0 18px 44px -22px rgba(20, 30, 50, 0.32);
+  --bump-dim: rgba(80, 92, 112, 0.16);
 }
 
 :root {
