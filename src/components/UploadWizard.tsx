@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Icon } from "@/components/Icon";
 import { PickStep } from "@/components/PickStep";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { normalizeSeason } from "@/upload/season";
 import type { Catalog } from "@/server/catalog";
 import type { PreviewResult } from "@/upload/preview";
 
@@ -20,6 +21,7 @@ export function UploadWizard({ catalog }: { catalog: Catalog }) {
   const [step, setStep] = useState(0); // 0..3
   const [leagueId, setLeagueId] = useState(sports[0]?.leagues[0]?.id ?? "");
   const [season, setSeason] = useState<string | null>(null);
+  const [customSeason, setCustomSeason] = useState(""); // free-text "other season" input
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<PreviewResult | null>(null);
   const [busy, setBusy] = useState(false);
@@ -128,17 +130,53 @@ export function UploadWizard({ catalog }: { catalog: Catalog }) {
             }}
             options={(sport?.leagues ?? []).map((l) => ({ id: l.id, name: l.name, meta: l.country }))}
           />
-          <PickStep
-            n={2}
-            label="Season"
-            value={season ?? ""}
-            onPick={setSeason}
-            options={(league?.seasons ?? []).map((s) => ({
-              id: s.season,
-              name: s.season,
-              meta: s.hasData ? "has data" : null,
-            }))}
-          />
+          <div>
+            <PickStep
+              n={2}
+              label="Season"
+              value={season ?? ""}
+              onPick={(id) => {
+                setSeason(id);
+                setCustomSeason("");
+              }}
+              options={(league?.seasons ?? []).map((s) => ({
+                id: s.season,
+                name: s.season,
+                meta: s.hasData ? "has data" : null,
+              }))}
+            />
+            <div className="mt-[14px]">
+              <label className="mb-[7px] block font-mono text-[11px] uppercase tracking-[0.1em] text-fg3">
+                Or enter another season
+              </label>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={customSeason}
+                placeholder="e.g. 1998-99"
+                aria-label="Custom season"
+                aria-invalid={!!customSeason.trim() && !normalizeSeason(customSeason)}
+                onChange={(e) => {
+                  setCustomSeason(e.target.value);
+                  setSeason(normalizeSeason(e.target.value));
+                }}
+                className="w-full rounded-field border-[1.5px] border-line bg-panel px-[14px] py-[11px] font-head text-[15px] text-fg outline-none transition-colors placeholder:text-fg3 focus:border-accent"
+              />
+              {customSeason.trim() && !normalizeSeason(customSeason) && (
+                <p className="mt-[7px] text-[12.5px] text-fg3">
+                  Use a season like <span className="font-mono text-fg2">1998-99</span> (consecutive years).
+                </p>
+              )}
+              {(() => {
+                const norm = normalizeSeason(customSeason);
+                return norm && norm !== customSeason.trim() ? (
+                  <p className="mt-[7px] text-[12.5px] text-fg3">
+                    Will be saved as <span className="font-mono text-accent">{norm}</span>.
+                  </p>
+                ) : null;
+              })()}
+            </div>
+          </div>
         </div>
       )}
 
