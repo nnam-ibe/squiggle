@@ -77,10 +77,13 @@ export function UploadWizard({ catalog }: { catalog: Catalog }) {
       <header className="mb-[26px] flex items-center justify-between">
         <Link
           href="/"
-          aria-label="Back to home"
-          className="flex h-[38px] w-[38px] items-center justify-center rounded-field border-[1.5px] border-line bg-panel text-fg2 transition-colors hover:border-line2 hover:text-fg"
+          aria-label="Squiggle home"
+          className="flex flex-none items-center gap-[7px] text-fg transition-opacity hover:opacity-70"
         >
-          <Icon name="back" size={20} />
+          <span className="flex text-accent">
+            <Icon name="squiggle" size={22} />
+          </span>
+          <span className="font-head text-[15px] font-extrabold tracking-[-0.02em]">Squiggle</span>
         </Link>
         <span className="font-head text-[17px] font-extrabold tracking-[-0.01em]">Upload data</span>
         <ThemeToggle />

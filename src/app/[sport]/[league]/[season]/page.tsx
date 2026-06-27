@@ -50,10 +50,13 @@ export default async function DatasetPage({
       <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-line bg-[color-mix(in_oklab,var(--bg)_86%,transparent)] px-4 py-[13px] backdrop-blur-[14px]">
         <Link
           href="/"
-          aria-label="Back"
-          className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-field border-[1.5px] border-line bg-panel text-fg2 transition-colors hover:border-line2 hover:text-fg"
+          aria-label="Squiggle home"
+          className="flex flex-none items-center gap-[7px] text-fg transition-opacity hover:opacity-70"
         >
-          <Icon name="back" size={20} />
+          <span className="flex text-accent">
+            <Icon name="squiggle" size={22} />
+          </span>
+          <span className="font-head text-[15px] font-extrabold tracking-[-0.02em]">Squiggle</span>
         </Link>
         <div className="flex min-w-0 flex-1 items-center gap-[11px]">
           <span className="flex h-9 w-9 flex-none items-center justify-center rounded-[10px] border border-line bg-panel2 text-accent">
