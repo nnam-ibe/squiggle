@@ -1,6 +1,6 @@
 # CLOUD-30: Vercel + Postgres deployment
 
-**Status:** in-progress  
+**Status:** done  
 **Priority:** high  
 **Created:** 2026-06-14  
 **Updated:** 2026-06-27  
@@ -9,9 +9,9 @@
 Epic 6 — Configure hosting, env vars (DB URL, IP salt), run migrations on deploy.
 
 ## Acceptance Criteria
-- [ ] Production URL serves the app
-- [ ] Uploads persist
-- [ ] Permalinks work
+- [x] Production URL serves the app — `squiggle-taupe.vercel.app` (HTTP 200)
+- [x] Uploads persist — Postgres connected/writable; verified via prod seed + live reads
+- [x] Permalinks work — `/soccer/premier-league/2025-26` and `/motorsport/formula-1/2024` render seeded standings
 
 ## Notes
 Depends on CLOUD-14, CLOUD-16.
@@ -24,8 +24,8 @@ Repo-side enablement done (this branch):
   applies migrations on every deploy; plus `db:migrate:deploy`.
 - `README.md` — Vercel + Postgres deployment guide and env-var reference.
 
-Remaining (manual, needs Vercel account + Postgres provider) — keeps ticket open until
-the live deploy is verified:
-- Provision Postgres; import repo into Vercel; set `DATABASE_URL` + `IP_HASH_SALT`.
-- Deploy (migrations run via `vercel-build`); run `npm run seed` once against prod.
-- Then confirm acceptance criteria on the live URL and move to `done/`.
+Live deploy completed and verified:
+- Project `squiggle` on Vercel (Next.js, Node 24.x) with `DATABASE_URL` + `IP_HASH_SALT` set;
+  migrations apply on deploy via `vercel-build`.
+- Production DB seeded with launch datasets (`scripts/seed-datasets.ts` against prod creds).
+- Homepage lists both datasets; permalinks render real standings at `squiggle-taupe.vercel.app`.
