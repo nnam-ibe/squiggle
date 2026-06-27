@@ -1,6 +1,6 @@
 # CLOUD-36: Bump chart shouldn't force horizontal scroll on desktop
 
-**Status:** open  
+**Status:** done  
 **Priority:** high  
 **Created:** 2026-06-27  
 **Updated:** 2026-06-27  
@@ -29,11 +29,33 @@ overflow.
   rounds isn't feasible.
 
 ## Acceptance Criteria
-- [ ] On desktop (≥1440px), the full Premier League 2025-26 chart (38 rounds) is
+- [x] On desktop (≥1440px), the full Premier League 2025-26 chart (38 rounds) is
       visible without horizontal scrolling
-- [ ] F1 datasets (e.g. `/motorsport/formula-1/2024`, 24 rounds) also fit on desktop
-- [ ] Mobile still scrolls gracefully; axis stays pinned; no layout regressions
-- [ ] No clipping of end pills/labels at the right edge
+- [x] F1 datasets (e.g. `/motorsport/formula-1/2024`, 24 rounds) also fit on desktop
+- [x] Mobile still scrolls gracefully; axis stays pinned; no layout regressions
+- [x] No clipping of end pills/labels at the right edge
 
 ## Notes
 Depends on CLOUD-35. Verify visually at 1280 / 1440 / 1920 widths.
+
+## Resolution
+Changed the column-width strategy in `src/components/BumpChart.tsx`:
+
+    const colW = fitCol >= FIT_FLOOR ? Math.min(fitCol, MAX_COL) : minCol;
+    // FIT_FLOOR = 16, MAX_COL = 72, minCol = 30/40
+
+Instead of `Math.max(minCol, fitCol)` (which clamped columns to a 30/40px minimum
+and overflowed dense seasons), the chart now **fills the container** down to a 16px
+column floor, only falling back to `minCol` + horizontal scroll on very narrow
+(phone) widths. A `MAX_COL` cap stops sparse datasets from stretching absurdly wide.
+
+Behaviour by container width:
+- ≥~1250px: fills (unchanged from before, capped at 72px columns).
+- ~730–1250px (laptops/desktops — the bug band): now **fits without scroll**
+  (previously clamped to 30px and overflowed).
+- <~730px (phones): `colW = minCol`, scrolls — **identical to prior behaviour**.
+
+Verified live (dev server, real ~1054px viewport, which is stricter than the 1440
+target): PL 2025-26 (38 rounds) and F1 2024 (24 rounds) both fit exactly
+(`overflowPx = 0`, svg width == container width) with all end-pills visible. Mobile
+fallback is unchanged by construction. typecheck/lint/tests pass.
