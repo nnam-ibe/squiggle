@@ -90,6 +90,21 @@ export default async function DatasetPage({
       <div className="flex-1 px-3 py-4 sm:px-[18px]">
         <BumpChart series={series} rounds={data.standings.rounds.length} variant={variant} />
       </div>
+
+      {variant === "f1" && (
+        <p className="px-4 pb-4 text-center font-mono text-[11px] text-fg3">
+          F1 data via{" "}
+          <a
+            href="https://jolpi.ca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 transition-colors hover:text-fg2"
+          >
+            Jolpica
+          </a>{" "}
+          (Ergast)
+        </p>
+      )}
     </div>
   );
 }

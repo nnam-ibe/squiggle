@@ -34,6 +34,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 `npm run seed` loads the verified launch datasets so the homepage isn't empty.
 It runs against whatever `DATABASE_URL` points to (including production).
 
+### Fetching F1 data
+
+`npm run fetch:f1 -- --season 2024` fetches a Formula 1 season from the
+[Jolpica API](https://jolpi.ca) (the Ergast-compatible successor) and persists it
+as a dataset — no manual CSV needed. Add `--dry` to fetch and report without
+writing. The season must exist in `data/leagues/formula-1.json` (for the
+constructor roster). Source attribution is shown on F1 dataset pages.
+
 ## Deployment (Vercel + Postgres)
 
 The app runs as a standard Node.js Next.js server and deploys to Vercel with no

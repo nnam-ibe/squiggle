@@ -16,7 +16,8 @@
     "db:migrate:deploy": "NODE_NO_WARNINGS=1 node scripts/migrate.ts",
     "db:push": "drizzle-kit push",
     "convert:footballdata": "NODE_NO_WARNINGS=1 node scripts/convert-footballdata.ts",
-    "seed": "NODE_NO_WARNINGS=1 node --env-file=.env scripts/seed-datasets.ts"
+    "seed": "NODE_NO_WARNINGS=1 node --env-file=.env scripts/seed-datasets.ts",
+    "fetch:f1": "NODE_NO_WARNINGS=1 node --env-file=.env scripts/fetch-f1.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
