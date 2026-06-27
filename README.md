@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Squiggle
+
+A [Next.js](https://nextjs.org) app for uploading league/season results and
+viewing them as animated standings "bump charts." Data is stored in Postgres
+via [Drizzle](https://orm.drizzle.team).
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and configure the environment:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env   # then fill in DATABASE_URL and IP_HASH_SALT
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apply the database schema, then run the dev server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run db:migrate     # or: npm run db:migrate:deploy
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-## Learn More
+### Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+| Variable       | Required | Description                                                        |
+| -------------- | -------- | ------------------------------------------------------------------ |
+| `DATABASE_URL` | yes      | Postgres connection string. Append `?sslmode=require` for managed providers (Supabase/Neon). |
+| `IP_HASH_SALT` | yes      | Random secret used to hash uploader IPs for rate limiting.         |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Seeding demo data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`npm run seed` loads the verified launch datasets so the homepage isn't empty.
+It runs against whatever `DATABASE_URL` points to (including production).
 
-## Deploy on Vercel
+## Deployment (Vercel + Postgres)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The app runs as a standard Node.js Next.js server and deploys to Vercel with no
+adapter. Migrations are applied automatically on every deploy: Vercel runs the
+`vercel-build` script (`node scripts/migrate.ts && next build`), which brings
+the schema up to date before building.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**One-time setup:**
+
+1. **Provision Postgres.** Create a database (Supabase, Neon, or Vercel
+   Postgres). Copy its connection string — use the **pooled/transaction** URL
+   with `?sslmode=require` (the client uses `prepare: false` so it is
+   pooler-safe).
+2. **Import the repo into Vercel** ([vercel.com/new](https://vercel.com/new)).
+   Vercel auto-detects Next.js; no build settings need changing.
+3. **Set environment variables** in the Vercel project (Production, and Preview
+   if you use it):
+   - `DATABASE_URL` — the connection string from step 1.
+   - `IP_HASH_SALT` — any long random string (e.g. `openssl rand -hex 32`).
+4. **Deploy.** The `vercel-build` step runs migrations, then builds. After the
+   first deploy, run `npm run seed` once (locally, with the production
+   `DATABASE_URL`) to populate the launch datasets.
+
+After deploying: the production URL serves the app, uploads persist to Postgres,
+and dataset permalinks (`/<sport>/<league>/<season>`) resolve from the database.
