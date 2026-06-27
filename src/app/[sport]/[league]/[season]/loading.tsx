@@ -1,7 +1,7 @@
 /** Dataset (chart) skeleton shown while standings load. Mirrors the page chrome. */
 export default function Loading() {
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1180px] flex-col" aria-busy="true">
+    <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col" aria-busy="true">
       <span className="sr-only">Loading chart…</span>
       <header className="flex items-center gap-3 border-b border-line px-4 py-[13px]">
         <div className="sq-skeleton size-[38px] flex-none rounded-field" />

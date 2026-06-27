@@ -46,7 +46,7 @@ export default async function DatasetPage({
   const series = buildChartSeries(data.standings, data.colors, data.shorts);
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1180px] flex-col">
+    <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col">
       <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-line bg-[color-mix(in_oklab,var(--bg)_86%,transparent)] px-4 py-[13px] backdrop-blur-[14px]">
         <Link
           href="/"
