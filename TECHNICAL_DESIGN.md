@@ -321,11 +321,11 @@ Validation rules:
   preview (computed final table + warnings/errors), step 4 confirm (+ replace warning).
 
 ### 9.1 BumpChart component
-- SVG (the `design/` prototype hand-rolls paths, so visx is optional). Y-axis
+- SVG with hand-rolled paths (visx optional). Y-axis
   **inverted** (position 1 at top), x-axis = rounds.
 - One `path` per entity, **smooth (Catmull-Rom) interpolation** by default
   (stepped optional), colored from config; entity label + final position at the
-  right edge. (Matches the Claude Design handoff — see `DESIGN.md`.)
+  right edge.
 - **Tap/click to highlight:** selected line bold + full opacity, others dimmed;
   tap empty space to reset. Generous touch hit-areas (invisible thick stroke).
 - **Duplicate-color disambiguation** (per `data/README.md`): when two entities

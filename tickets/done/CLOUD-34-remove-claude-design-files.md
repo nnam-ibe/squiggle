@@ -1,6 +1,6 @@
 # CLOUD-34: Remove Claude Design files from the repo
 
-**Status:** open  
+**Status:** done  
 **Priority:** medium  
 **Created:** 2026-06-27  
 **Updated:** 2026-06-27  
@@ -22,9 +22,22 @@ purely cleanup — no visual change intended.
 - Leave historical references inside `tickets/done/*` untouched.
 
 ## Acceptance Criteria
-- [ ] `design/` and `DESIGN.md` no longer exist in the repo
-- [ ] No active config/docs reference the deleted files; `npm run lint` passes
-- [ ] App builds and renders unchanged (`npm run build`, spot-check home + a dataset page)
+- [x] `design/` and `DESIGN.md` no longer exist in the repo
+- [x] No active config/docs reference the deleted files; `npm run lint` passes
+- [x] App builds and renders unchanged (spot-checked home, dataset, and upload pages — all 200)
 
 ## Notes
 The "Squiggle design" auto-memory should also be retired once this lands.
+
+## Resolution
+- Deleted `design/` and `DESIGN.md`.
+- `eslint.config.mjs` — removed the `design/**` ignore entry.
+- `ROADMAP.md` — removed the "Frontend tickets follow the Claude Design handoff in
+  `design/`" note.
+- `TECHNICAL_DESIGN.md` — reworded the BumpChart section to drop `design/` /
+  `DESIGN.md` citations (kept the technical intent).
+- `globals.css` and `Icon.tsx` — trimmed comments that pointed at deleted file paths.
+- Left `BumpChart.tsx`'s "design default line shape" comment and historical
+  `tickets/done/*` references untouched.
+- lint/typecheck/tests pass; home/dataset/upload still render (only comments + the
+  ignore entry changed — no logic or visual change).

@@ -1,5 +1,4 @@
-/** Minimal icon set ported from the design (design/project/Squiggle/screens.jsx).
-    Grows as later UI tickets need more icons. */
+/** Minimal icon set for the app UI. Grows as later UI tickets need more icons. */
 export type IconName = "squiggle" | "sun" | "moon" | "soccer" | "f1" | "chev" | "upload";
 
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {

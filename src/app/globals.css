@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Squiggle design tokens — ported from design/project/Squiggle.html (see DESIGN.md).
+/* Squiggle design tokens.
    Dark is the default; [data-theme="light"] overrides. Accent is amber #ffb020. */
 :root,
 :root[data-theme="dark"] {
