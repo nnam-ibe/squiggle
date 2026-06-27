@@ -39,6 +39,24 @@ export const DEFAULT_PL_ALIASES: Record<string, string> = {
   Leicester: "Leicester City",
 };
 
+/** football-data.co.uk La Liga abbreviations → canonical roster names. */
+export const DEFAULT_LALIGA_ALIASES: Record<string, string> = {
+  "Ath Bilbao": "Athletic Club",
+  "Ath Madrid": "Atletico Madrid",
+  Betis: "Real Betis",
+  Celta: "Celta Vigo",
+  Espanol: "Espanyol",
+  Sociedad: "Real Sociedad",
+  Vallecano: "Rayo Vallecano",
+  Oviedo: "Real Oviedo",
+};
+
+/** Alias map per league id, for the converter CLI to pick by `--league`. */
+export const ALIASES_BY_LEAGUE: Record<string, Record<string, string>> = {
+  "premier-league": DEFAULT_PL_ALIASES,
+  "la-liga": DEFAULT_LALIGA_ALIASES,
+};
+
 /** Normalize a date to ISO YYYY-MM-DD (passes ISO through; converts dd/mm/yy[yy]). */
 export function toIsoDate(value: string): string {
   const t = (value ?? "").trim();

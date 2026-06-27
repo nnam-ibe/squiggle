@@ -10,7 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Papa from "papaparse";
-import { convertFootballData, toTemplateCsv, DEFAULT_PL_ALIASES } from "../src/upload/footballdata.ts";
+import { convertFootballData, toTemplateCsv, ALIASES_BY_LEAGUE } from "../src/upload/footballdata.ts";
 
 function arg(flag: string): string | undefined {
   const i = process.argv.indexOf(flag);
@@ -29,7 +29,8 @@ if (!input || !league || !season) {
 
 const csv = fs.readFileSync(input, "utf8");
 const parsed = Papa.parse<Record<string, string>>(csv, { header: true, skipEmptyLines: "greedy" });
-const { rows, teams, rounds, skipped } = convertFootballData(parsed.data, { aliases: DEFAULT_PL_ALIASES });
+const aliases = ALIASES_BY_LEAGUE[league] ?? {};
+const { rows, teams, rounds, skipped } = convertFootballData(parsed.data, { aliases });
 
 // Validate resolved names against the league/season roster.
 const cfgPath = path.join(process.cwd(), "data", "leagues", `${league}.json`);
