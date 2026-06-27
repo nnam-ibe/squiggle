@@ -37,6 +37,31 @@
         { "name": "Valladolid", "short": "VLL", "color": "#921C8E" },
         { "name": "Alaves", "short": "ALA", "color": "#0761AF" }
       ]
+    },
+    "2025-26": {
+      "status": "complete",
+      "teams": [
+        { "name": "Real Madrid", "short": "RMA", "color": "#FEBE10" },
+        { "name": "Barcelona", "short": "BAR", "color": "#A50044" },
+        { "name": "Atletico Madrid", "short": "ATM", "color": "#CB3524" },
+        { "name": "Athletic Club", "short": "ATH", "color": "#EE2523" },
+        { "name": "Real Sociedad", "short": "RSO", "color": "#0067B1" },
+        { "name": "Sevilla", "short": "SEV", "color": "#D90000" },
+        { "name": "Real Betis", "short": "BET", "color": "#00954C" },
+        { "name": "Villarreal", "short": "VIL", "color": "#FFE667" },
+        { "name": "Valencia", "short": "VAL", "color": "#F18E00" },
+        { "name": "Girona", "short": "GIR", "color": "#CD2534" },
+        { "name": "Osasuna", "short": "OSA", "color": "#D91A21" },
+        { "name": "Getafe", "short": "GET", "color": "#005999" },
+        { "name": "Celta Vigo", "short": "CEL", "color": "#8AC3EE" },
+        { "name": "Rayo Vallecano", "short": "RAY", "color": "#E53027" },
+        { "name": "Mallorca", "short": "MLL", "color": "#E20613" },
+        { "name": "Espanyol", "short": "ESP", "color": "#007FC8" },
+        { "name": "Alaves", "short": "ALA", "color": "#0761AF" },
+        { "name": "Elche", "short": "ELC", "color": "#00913F" },
+        { "name": "Levante", "short": "LEV", "color": "#A4133C" },
+        { "name": "Real Oviedo", "short": "OVI", "color": "#0048A8" }
+      ]
     }
   }
 }

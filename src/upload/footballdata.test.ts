@@ -1,11 +1,34 @@
 import { describe, it, expect } from "vitest";
-import { toIsoDate, convertFootballData, toTemplateCsv } from "./footballdata";
+import { toIsoDate, convertFootballData, toTemplateCsv, ALIASES_BY_LEAGUE } from "./footballdata";
 
 describe("toIsoDate", () => {
   it("passes ISO through and converts dd/mm/yy[yy]", () => {
     expect(toIsoDate("2025-08-16")).toBe("2025-08-16");
     expect(toIsoDate("16/08/25")).toBe("2025-08-16");
     expect(toIsoDate("16/08/2025")).toBe("2025-08-16");
+  });
+});
+
+describe("ALIASES_BY_LEAGUE", () => {
+  it("maps La Liga football-data abbreviations to canonical roster names", () => {
+    const la = ALIASES_BY_LEAGUE["la-liga"];
+    const { rows } = convertFootballData(
+      [
+        { Date: "2024-08-15", HomeTeam: "Ath Bilbao", AwayTeam: "Sociedad", FTHG: "2", FTAG: "1", FTR: "H" },
+        { Date: "2024-08-15", HomeTeam: "Betis", AwayTeam: "Vallecano", FTHG: "0", FTAG: "0", FTR: "D" },
+      ],
+      { aliases: la },
+    );
+    const teams = rows.flatMap((r) => [r.home_team, r.away_team]);
+    expect(teams).toContain("Athletic Club");
+    expect(teams).toContain("Real Sociedad");
+    expect(teams).toContain("Real Betis");
+    expect(teams).toContain("Rayo Vallecano");
+    expect(la["Oviedo"]).toBe("Real Oviedo");
+  });
+
+  it("exposes a Premier League alias map too", () => {
+    expect(ALIASES_BY_LEAGUE["premier-league"]["Man City"]).toBe("Manchester City");
   });
 });
 
