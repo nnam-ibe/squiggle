@@ -59,9 +59,6 @@ engineering detail behind each item.
 - CLOUD-31 · Seed validated launch datasets
 - CLOUD-32 · Cross-device smoke test
 
-> Frontend tickets (CLOUD-16–20, 27–29) follow the Claude Design handoff in
-> `design/` — see `DESIGN.md` for tokens and the screen→ticket map.
-
 ## Pre-build verification (from `data/README.md` risks)
 - [ ] Confirm exact La Liga & Serie A head-to-head regulations (feeds CLOUD-7 tests).
 - [ ] Verify rosters/brand colors and per-league tie-breaker orders before seeding (CLOUD-31).
