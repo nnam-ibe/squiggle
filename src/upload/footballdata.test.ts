@@ -27,8 +27,11 @@ describe("ALIASES_BY_LEAGUE", () => {
     expect(la["Oviedo"]).toBe("Real Oviedo");
   });
 
-  it("exposes a Premier League alias map too", () => {
-    expect(ALIASES_BY_LEAGUE["premier-league"]["Man City"]).toBe("Manchester City");
+  it("exposes a Premier League alias map too, incl. historical clubs", () => {
+    const pl = ALIASES_BY_LEAGUE["premier-league"];
+    expect(pl["Man City"]).toBe("Manchester City");
+    expect(pl["West Brom"]).toBe("West Bromwich Albion");
+    expect(pl["QPR"]).toBe("Queens Park Rangers");
   });
 });
 
