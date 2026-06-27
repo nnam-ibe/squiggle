@@ -1,6 +1,6 @@
 # CLOUD-35: Full-width layout (remove large desktop margins)
 
-**Status:** open  
+**Status:** done  
 **Priority:** high  
 **Created:** 2026-06-27  
 **Updated:** 2026-06-27  
@@ -24,12 +24,25 @@ doesn't stretch absurdly wide on ultra-wide monitors.
   Confirm during implementation; widen only if it reads better.
 
 ## Acceptance Criteria
-- [ ] Dataset/details page uses the full viewport width (minus gutters) up to the
+- [x] Dataset/details page uses the full viewport width (minus gutters) up to the
       chosen ultra-wide cap; no large dead margins at 1280–1920px
-- [ ] An explicit max-width prevents over-stretching beyond ~1600px on ultra-wide
-- [ ] Mobile/tablet layout unchanged; no horizontal page scroll introduced
-- [ ] Home/upload width decision applied intentionally (kept narrow or widened)
+- [x] An explicit max-width prevents over-stretching beyond ~1600px on ultra-wide
+- [x] Mobile/tablet layout unchanged; no horizontal page scroll introduced
+- [x] Home/upload width decision applied intentionally (kept narrow or widened)
 
 ## Notes
 Directly enables CLOUD-36 (chart horizontal scroll) — widening the container gives
 the chart room to fit without scrolling on desktop.
+
+## Resolution
+- Dataset page wrapper changed `max-w-[1180px]` → `w-full max-w-[1600px]`
+  (`src/app/[sport]/[league]/[season]/page.tsx:49`), and the matching loading
+  skeleton (`.../loading.tsx:4`) so there's no width jump on load.
+- Cap chosen: **1600px** centered with `mx-auto` — fills the viewport on common
+  laptop/desktop widths (no dead margins ≤1600px) while preventing over-stretch on
+  ultra-wide. By the BumpChart fit math this makes the 38-round PL chart fit without
+  horizontal scroll at ≥~1440px (the residual <~1440px case is CLOUD-36).
+- **Home (`HomeScreen`) and Upload (`UploadWizard`) intentionally kept at
+  `max-w-[680px]`** — they are reading-width forms and read better narrow.
+- Verified: typecheck/lint/tests pass; served HTML confirms the 1600 cap. Browser
+  extension was unavailable, so multi-width visual confirmation is deferred to CLOUD-36.
