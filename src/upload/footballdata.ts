@@ -37,6 +37,16 @@ export const DEFAULT_PL_ALIASES: Record<string, string> = {
   Leeds: "Leeds United",
   Ipswich: "Ipswich Town",
   Leicester: "Leicester City",
+  // Historical clubs (older seasons)
+  Blackburn: "Blackburn Rovers",
+  Bolton: "Bolton Wanderers",
+  Luton: "Luton Town",
+  Norwich: "Norwich City",
+  QPR: "Queens Park Rangers",
+  Stoke: "Stoke City",
+  Swansea: "Swansea City",
+  "West Brom": "West Bromwich Albion",
+  Wigan: "Wigan Athletic",
 };
 
 /** football-data.co.uk La Liga abbreviations → canonical roster names. */
