@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "node scripts/migrate.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -12,6 +13,7 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:migrate:deploy": "NODE_NO_WARNINGS=1 node scripts/migrate.ts",
     "db:push": "drizzle-kit push",
     "convert:footballdata": "NODE_NO_WARNINGS=1 node scripts/convert-footballdata.ts",
     "seed": "NODE_NO_WARNINGS=1 node --env-file=.env scripts/seed-datasets.ts"
