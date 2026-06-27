@@ -70,9 +70,16 @@ export function BumpChart({
   const n = series.length;
   const rowH = n > 12 ? 27 : 34;
   const h = PAD_T + (n - 1) * rowH + PAD_B + rowH;
+  // Column width strategy: fill the available width so the whole season is visible
+  // without horizontal scrolling — as long as columns stay readable. On very narrow
+  // screens (phones) the fit width drops below FIT_FLOOR, so we fall back to a
+  // comfortable min column and let the chart scroll instead of cramming. A max keeps
+  // sparse (few-round) datasets from stretching absurdly wide.
   const minCol = n > 12 ? 30 : 40;
+  const FIT_FLOOR = 16;
+  const MAX_COL = 72;
   const fitCol = (wrapW - 1 - PAD_L - PILL_W) / Math.max(1, rounds - 1);
-  const colW = Math.max(minCol, fitCol);
+  const colW = fitCol >= FIT_FLOOR ? Math.min(fitCol, MAX_COL) : minCol;
   const plotW = PAD_L + (rounds - 1) * colW + PILL_W;
 
   const xFor = (r: number) => PAD_L + (r - 1) * colW;
